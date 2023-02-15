@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "515096959666",
+    "firebase_url": "https://firbaseiot-dde0f-default-rtdb.firebaseio.com",
+    "project_id": "firbaseiot-dde0f",
+    "storage_bucket": "firbaseiot-dde0f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:515096959666:android:0039cb0f30f3a013e587ab",
+        "android_client_info": {
+          "package_name": "com.bgreen"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "515096959666-gi3k59ka0apqhe0gf0vp1r8ggj8ka4ua.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC68d4GzcFMqNaecZb4z9G3PfbxXl02ZTo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "515096959666-gi3k59ka0apqhe0gf0vp1r8ggj8ka4ua.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
