@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:b_green/page/meandrawer.dart';
 import 'package:b_green/page/statusiot.dart';
 import 'package:flutter/material.dart';
 import 'package:b_green/core/color.dart';
@@ -31,7 +32,7 @@ class _HomePageState extends State<HomePage> {
         appBar: AppBar(
           elevation: 0,
           backgroundColor: Colors.green,
-          automaticallyImplyLeading: false,
+         /* automaticallyImplyLeading: false,
           leadingWidth: 40,
           leading: TextButton(
             onPressed: () {},
@@ -39,6 +40,7 @@ class _HomePageState extends State<HomePage> {
               'assets/icons/menu.png',
             ),
           ),
+          
           actions: [
             Container(
               height: 40.0,
@@ -59,8 +61,9 @@ class _HomePageState extends State<HomePage> {
                 ),*/
               ),
             ),
-          ],
+          ],*/
         ),
+        drawer: MeanDrawer(),
         body: SingleChildScrollView(
             child:
                 Column(crossAxisAlignment: CrossAxisAlignment.start, children: [

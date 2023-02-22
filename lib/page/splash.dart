@@ -1,3 +1,4 @@
+import 'package:b_green/page/meandrawer.dart';
 import 'package:flutter/material.dart';
 //import 'package:begreen/core/color.dart';
 import 'package:b_green/widget/bottomnav.dart';
@@ -8,6 +9,7 @@ class SplashPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      //
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
