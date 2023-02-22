@@ -1,10 +1,13 @@
+import 'dart:io';
+
 import 'package:b_green/page/statusiot.dart';
 import 'package:flutter/material.dart';
 import 'package:b_green/core/color.dart';
+import 'package:image_picker/image_picker.dart';
 //import 'package:begreen/data/category_model.dart';
 //import 'package:begreen/data/plant_data.dart';
 //import 'package:begreen/page/details_page.dart';
-import 'package:b_green/main.dart';
+//import 'package:b_green/main.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -104,15 +107,89 @@ class _HomePageState extends State<HomePage> {
               ])),
           ElevatedButton.icon(
               onPressed: () {
-               // statusiot();
-               Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => const statusiot()),
-            );
+                // statusiot();
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const statusiot()),
+                );
               },
-              icon: Icon(Icons.details_outlined),
-              label: Text("To veiw status")),
-          //   ElevatedButton.icon(onPressed: onPressed, icon: icon, label: label)
+              icon: const Icon(Icons.details_outlined),
+              label: const Text("View status")),
+          ElevatedButton.icon(
+            icon: const Icon(Icons.camera_alt),
+            label: const Text("take photo"),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const CameraGalleryDemo()),
+              );
+            },
+          )
         ])));
+  }
+}
+
+class CameraGalleryDemo extends StatefulWidget {
+  const CameraGalleryDemo({super.key});
+
+  @override
+  // ignore: library_private_types_in_public_api
+  _CameraGalleryDemoState createState() => _CameraGalleryDemoState();
+}
+
+class _CameraGalleryDemoState extends State<CameraGalleryDemo> {
+  File? _image;
+
+  // Function to get image from the camera
+  Future<void> _getImageFromCamera() async {
+    final image = await ImagePicker().pickImage(source: ImageSource.camera);
+
+    if (image == null) return;
+
+    setState(() {
+      _image = File(image.path);
+    });
+  }
+
+  // Function to get image from the gallery
+  Future<void> _getImageFromGallery() async {
+    final image = await ImagePicker().pickImage(source: ImageSource.gallery);
+
+    if (image == null) return;
+
+    setState(() {
+      _image = File(image.path);
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Camera Gallery Demo'),
+      ),
+      body: Center(
+        child: _image == null
+            ? const Text('No image selected.')
+            : Image.file(_image!),
+      ),
+      floatingActionButton: Row(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          FloatingActionButton(
+            onPressed: _getImageFromCamera,
+            tooltip: 'Take a photo',
+            child: const Icon(Icons.camera_alt),
+          ),
+          const SizedBox(width: 16),
+          FloatingActionButton(
+            onPressed: _getImageFromGallery,
+            tooltip: 'Pick from gallery',
+            child: const Icon(Icons.photo_library),
+          ),
+        ],
+      ),
+    );
   }
 }

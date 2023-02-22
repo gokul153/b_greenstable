@@ -39,6 +39,7 @@ dependencies:
   firebase_database: ^10.0.10
   http: ^0.13.5
   syncfusion_flutter_gauges: ^20.4.50
+  image_picker: ^0.8.6+2
 
 dev_dependencies:
   flutter_test:
