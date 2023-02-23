@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:b_green/core/color.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 //import 'package:begreen/data/category_model.dart';
 //import 'package:begreen/data/plant_data.dart';
 //import 'package:begreen/page/details_page.dart';
@@ -134,7 +135,9 @@ class _HomePageState extends State<HomePage> {
         ])));
   }
 }
- File? _image, _croppedFile;
+
+File? _image, _croppedFile;
+
 class CameraGalleryDemo extends StatefulWidget {
   const CameraGalleryDemo({super.key});
 
@@ -144,18 +147,21 @@ class CameraGalleryDemo extends StatefulWidget {
 }
 
 class _CameraGalleryDemoState extends State<CameraGalleryDemo> {
- 
-
   ///static Future<File> Function(File file) cropImage
   // Function to get image from the camera
   Future<void> _getImageFromCamera() async {
     final image = await ImagePicker().pickImage(source: ImageSource.camera);
-
+    //XFile? file = await ImagePicker().pickImage(source: ImageSource.camera);
     if (image == null) return;
 
     setState(() {
       _image = File(image.path);
+      print("${_image?.path}");
     });
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => const cropwindow()),
+    );
   }
 
   Future<void> _cropImage() async {
@@ -179,7 +185,7 @@ class _CameraGalleryDemoState extends State<CameraGalleryDemo> {
         if (Cropped != null) {
           setState(() {
             _croppedFile = File(Cropped.path);
-             _image = File(Cropped.path);
+            _image = File(Cropped.path);
           });
         }
       }
@@ -197,10 +203,10 @@ class _CameraGalleryDemoState extends State<CameraGalleryDemo> {
     setState(() {
       _image = File(image.path);
     });
-     Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const cropwindow()),
-                );
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => const cropwindow()),
+    );
   }
 
   @override
@@ -209,12 +215,13 @@ class _CameraGalleryDemoState extends State<CameraGalleryDemo> {
       appBar: AppBar(
         title: const Text('Camera Gallery Demo'),
       ),
-      body: 
-      Column(
+      body: Column(
         children: [
-          ElevatedButton.icon(onPressed: (){}, icon: Icon(Icons.upload), label: Text("upload")),
+          ElevatedButton.icon(
+              onPressed: () {},
+              icon: Icon(Icons.upload),
+              label: Text("upload")),
           Center(
-            
             child: _image == null
                 ? const Text('No image selected.')
                 : Image.file(_image!),
@@ -245,6 +252,7 @@ class _CameraGalleryDemoState extends State<CameraGalleryDemo> {
     );
   }
 }
+
 class cropwindow extends StatefulWidget {
   const cropwindow({super.key});
 
@@ -252,8 +260,21 @@ class cropwindow extends StatefulWidget {
   State<cropwindow> createState() => _cropwindowState();
 }
 
+Reference referenceRoot = FirebaseStorage.instance.ref();
+Reference referencedirimage = referenceRoot.child('images');
+Reference referenceimage_up = referencedirimage.child('imagename');
+String image_url = '';
+
 class _cropwindowState extends State<cropwindow> {
-   Future<void> cropImage() async {
+  Future<void> upimage() async {
+      try {
+        await referenceimage_up.putFile(File(_image!.path));
+        image_url = await referenceimage_up.getDownloadURL();
+      } catch (e) {
+        print(e);
+      }
+    }
+  Future<void> cropImage() async {
     print("croping");
     try {
       if (_image != null) {
@@ -274,12 +295,14 @@ class _cropwindowState extends State<cropwindow> {
         if (Cropped != null) {
           setState(() {
             _croppedFile = File(Cropped.path);
+            _image = File(Cropped.path);
           });
         }
       }
     } catch (e) {
       print(e);
     }
+  
   }
 
   @override
@@ -290,18 +313,20 @@ class _cropwindowState extends State<cropwindow> {
         child: _image == null
             ? const Text('No image selected.')
             : Image.file(_image!),
-            
-    ),
-    floatingActionButton: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          FloatingActionButton(
-            onPressed: cropImage,
-            tooltip: 'Crop_image',
-            child: const Icon(Icons.crop),
-          ),
-          ]
-    ),
+      ),
+      floatingActionButton:
+          Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
+        FloatingActionButton(
+          onPressed: cropImage,
+          tooltip: 'Crop_image',
+          child: const Icon(Icons.crop),
+        ),
+        ElevatedButton.icon(
+          onPressed: upimage,
+          icon: Icon(Icons.upload_file),
+          label: Text("Process image"),
+        )
+      ]),
     );
   }
 }
