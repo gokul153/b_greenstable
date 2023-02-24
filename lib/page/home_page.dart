@@ -214,7 +214,9 @@ class _CameraGalleryDemoState extends State<CameraGalleryDemo> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Camera Gallery Demo'),
+        backgroundColor: Colors.green,
       ),
+      drawer: MeanDrawer(),
       body: Column(
         children: [
           ElevatedButton.icon(

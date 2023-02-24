@@ -1,6 +1,11 @@
+import 'package:b_green/data/bottom_menu.dart';
 import 'package:b_green/main.dart';
+import 'package:b_green/page/home_page.dart';
+import 'package:b_green/page/main_home.dart';
 import 'package:b_green/page/prediction.dart';
+import 'package:b_green/page/splash.dart';
 import 'package:b_green/page/statusiot.dart';
+import 'package:b_green/widget/bottomnav.dart';
 import 'package:flutter/material.dart';
 
 //import './detail_screen.dart';
@@ -64,7 +69,7 @@ class MeanDrawer extends StatelessWidget {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => HomePage(),
+                    builder: (context) => BottomNavBar(),
                   ));
             },
           ),
@@ -80,12 +85,12 @@ class MeanDrawer extends StatelessWidget {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => statusiot(),
+                    builder: (context) => FPage(),
                   ));
             },
           ),
           ListTile(
-              leading: Icon(Icons.arrow_back),
+              leading: Icon(Icons.batch_prediction),
               title: Text(
                 'Prediction',
                 style: TextStyle(
@@ -102,22 +107,31 @@ class MeanDrawer extends StatelessWidget {
           ListTile(
             leading: Icon(Icons.mail),
             title: Text(
-              'search',
+              'Disease Analysics',
               style: TextStyle(
                 fontSize: 18,
               ),
             ),
-            onTap: null,
+            onTap: (){
+              Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => CameraGalleryDemo(),
+                    ));
+            },
           ),
           ListTile(
-            leading: Icon(Icons.apple),
+            leading: Icon(Icons.nature_outlined),
             title: Text(
               'apple',
               style: TextStyle(
                 fontSize: 18,
               ),
             ),
-            onTap: null,
+            onTap:(){
+                 //   builder: (context) => const CameraGalleryDemo()),
+                  
+            },
           ),
         ],
       ),

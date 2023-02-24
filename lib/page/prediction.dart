@@ -1,3 +1,4 @@
+import 'package:b_green/page/meandrawer.dart';
 import 'package:flutter/material.dart';
 //import "dart:ui";
 //import 'selectcrop.dart';
@@ -20,7 +21,9 @@ class _PredictState extends State<Predict> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Home"),
+        backgroundColor: Colors.green,
       ),
+      drawer: MeanDrawer(),
       /*body: Container(
         child: SizedBox(
           width: 200.0,
