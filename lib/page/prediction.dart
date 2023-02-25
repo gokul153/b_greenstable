@@ -1,29 +1,50 @@
-import 'package:b_green/page/meandrawer.dart';
+import 'package:b_green/crop/orange.dart';
+import 'package:b_green/crop/pigeonpeas.dart';
+import 'package:b_green/crop/result.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+//import 'package:homie/functions.dart';
 //import "dart:ui";
 //import 'selectcrop.dart';
+import 'package:b_green/function.dart';
+import 'package:flutter/services.dart';
 
 class Predict extends StatefulWidget {
-  const Predict({Key? key}) : super(key: key);
   @override
   State<Predict> createState() => _PredictState();
 }
 
 class _PredictState extends State<Predict> {
   //use this controller to get what user typed
-  final _textController = TextEditingController();
-  int key = 1;
+  final _ntextController = TextEditingController();
 
- // get kDefaultPadding => null;
+  final _ptextController = TextEditingController();
+
+  final _ktextController = TextEditingController();
+
+  final _phtextController = TextEditingController();
+
+  final _rtextController = TextEditingController();
+
+  // key = 1;
+  double n = 0, p = 0, k = 0;
+
+  double ph = 0.0, rain = 0.0;
+
+  String url = '';
+
+  int error = 0;
+
+  // get kDefaultPadding => null;
+  String cropr = "";
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Home"),
-        backgroundColor: Colors.green,
       ),
-      drawer: MeanDrawer(),
       /*body: Container(
         child: SizedBox(
           width: 200.0,
@@ -35,7 +56,7 @@ class _PredictState extends State<Predict> {
          child: Column(
            children: [
             */
-   /*   body: SingleChildScrollView(
+      /*   body: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
         child: Row(
           children: const <Widget>[
@@ -63,71 +84,155 @@ class _PredictState extends State<Predict> {
           ],
         ),
       ),*/
-       body: 
-       Padding(
+      body: Padding(
         padding: const EdgeInsets.all(20),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             TextFormField(
-              controller: _textController,
+              controller: _ntextController,
               decoration: const InputDecoration(
-                hintText: 'Nitrogen Amt.',
+                hintText: 'Nitrogen Level',
                 border: OutlineInputBorder(),
               ),
             ),
             TextFormField(
-              controller: _textController,
+              controller: _ptextController,
               decoration: const InputDecoration(
-                hintText: 'Phosphorous Amt.',
+                hintText: 'Phosphorous Level',
                 border: OutlineInputBorder(),
               ),
             ),
             TextFormField(
-              controller: _textController,
+              controller: _ktextController,
               decoration: const InputDecoration(
-                hintText: 'Potassium Amt.',
+                hintText: 'Potassium Level',
+                border: OutlineInputBorder(),
+              ),
+            ),
+            TextFormField(
+              controller: _phtextController,
+              decoration: const InputDecoration(
+                hintText: 'pH Value',
+                border: OutlineInputBorder(),
+              ),
+            ),
+            TextFormField(
+              controller: _rtextController,
+              decoration: const InputDecoration(
+                hintText: 'Rainfall in mm',
                 border: OutlineInputBorder(),
               ),
             ),
             MaterialButton(
-              onPressed: () {},
+              onPressed: () async {
+                print("butoon presed");
+                error = 0;
+                n = double.parse(_ntextController.text);
+                p = double.parse(_ptextController.text);
+                k = double.parse(_ktextController.text);
+                ph = double.parse(_phtextController.text);
+                rain = double.parse(_rtextController.text);
+
+                if (n > 100 || n <= 0) {
+                  const snackbar = SnackBar(
+                      content: Text(
+                          "Invalid value for nitrogen,phosphorous or pottasium"));
+                  ScaffoldMessenger.of(context).showSnackBar(snackbar);
+                  error = 1;
+                } else {
+                  error = 0;
+                }
+                if (p <= 0) {
+                  const snackbar =
+                      SnackBar(content: Text("Invalid value for phosphorous"));
+                  ScaffoldMessenger.of(context).showSnackBar(snackbar);
+                  error = 1;
+                } else {
+                  error = 0;
+                }
+                if (k <= 0) {
+                  const snackbar =
+                      SnackBar(content: Text("Invalid value for pottasium"));
+                  ScaffoldMessenger.of(context).showSnackBar(snackbar);
+                  error = 1;
+                } else {
+                  error = 0;
+                }
+                if (rain <= 0) {
+                  const snackbar =
+                      SnackBar(content: Text("Invalid value for rain"));
+                  ScaffoldMessenger.of(context).showSnackBar(snackbar);
+                  error = 1;
+                } else {
+                  error = 0;
+                }
+                if (ph > 14 || ph <= 0) {
+                  const snackbar =
+                      SnackBar(content: Text("Invalid value for pH"));
+                  ScaffoldMessenger.of(context).showSnackBar(snackbar);
+                  error = 1;
+                } else {
+                  error = 0;
+                }
+                if (error == 0) {
+                  url =
+                      'http://ec2-43-205-135-176.ap-south-1.compute.amazonaws.com:8080/crop?n=$n&p=$p&k=$k&ph=$ph&r=$rain';
+                  print("fetching");
+                //  print(url);
+                  http.Response response = await http.get(Uri.parse(url));
+                  print(response.body);
+                  cropr = response.body;
+                  print("from maain$cropr");
+                  setState(() {
+                    // cropr = "intial";
+
+                    this.cropr = cropr.toString();
+                       });
+                    //  cropr = "Orange";
+                    if (cropr.contains("Orange")) {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Orange(),
+                          ));
+                      //   Navigator.of(context).pushReplacementNamed('/Orange');
+                    }
+                     if (cropr.contains("Pigeonpeas")) {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => pigeon(),
+                          ));
+                      //   Navigator.of(context).pushReplacementNamed('/Orange');
+                    }
+                 /*   Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => result(),
+                        ));*/
+
+                    //    if(cropr)
+               
+                  // const snackbar = SnackBar(content: Text('crop is$cropr'));
+                  //ScaffoldMessenger.of(context).showSnackBar(snackbar);
+                  ;
+                } else {
+                  const snackbar = SnackBar(content: Text("Invalid "));
+                  ScaffoldMessenger.of(context).showSnackBar(snackbar);
+                }
+              },
               color: Colors.green,
               child:
                   const Text('SUBMIT', style: TextStyle(color: Colors.white)),
-            )
+            ),
+            Text("Crop Recommeded According to the condition is as follows \n"),
+            Text('$cropr'),
+            Text(cropr),
           ],
         ),
       ),
     );
-
-    // It will provie us total height  and width of our screen
-
-    //double width = MediaQuery.of(context).size.width;
-    //double height = MediaQuery.of(context).size.height;
-
-    // it enable scrolling on small device
-    //body: Container(
-    //height: MediaQuery.of(context).devicePixelRatio,
-    //child: SingleChildScrollView(
-    // child: Column(
-    //crossAxisAlignment: CrossAxisAlignment.start,
-    /* mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget>[
-              Text("select crop", style: TextStyle()),
-
-              ///int key=key+1;
-              SelectCrop(key: UniqueKey()),
-              SizedBox(height: kDefaultPadding),
-            ],
-          ),
-        ),
-      ),
-      
-      */
-    //Container(
-    //FORM FOR NPK
-  
   }
 }
 

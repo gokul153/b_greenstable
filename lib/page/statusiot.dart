@@ -14,8 +14,10 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:http/http.dart';
 import 'package:syncfusion_flutter_gauges/gauges.dart';
 import 'package:lite_rolling_switch/lite_rolling_switch.dart';
+
 Map mapresponse = {};
 Map moisture = {};
+
 class statusiot extends StatefulWidget {
   const statusiot({super.key});
 
@@ -24,12 +26,12 @@ class statusiot extends StatefulWidget {
 }
 
 class _statusiotState extends State<statusiot> {
- final url =
+  final url =
       "https://api.thingspeak.com/channels/2019435/fields/1.json?api_key=9S859ECUZDHBKRIY&results=2";
   var _postjson = [];
   dynamic value;
   bool loading = false;
-  double wet=0 ;
+  double wet=0;
   final databaseRef = FirebaseDatabase.instance.ref('Post');
   final postcontroller = TextEditingController();
   final ref = FirebaseDatabase.instance.ref('FirebaseIOT');
@@ -44,12 +46,13 @@ class _statusiotState extends State<statusiot> {
   void initState() {
     // TODO: implement initState
     super.initState();
-  //  FetchPosts();
+    //  FetchPosts();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-    appBar: AppBar(
+      appBar: AppBar(
         title: Text("B_green"),
         backgroundColor: (Colors.green),
       ),
@@ -151,8 +154,6 @@ class _statusiotState extends State<statusiot> {
                     .onError((error, stackTrace) {
                       print("error Occured \n");
                     });
-                    
-
               },
               child: Text("Turn on!"),
             ),

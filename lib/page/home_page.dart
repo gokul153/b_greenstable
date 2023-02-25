@@ -1,5 +1,7 @@
 import 'dart:io';
 
+//import 'package:b_green/function.dart';
+import 'package:b_green/function.dart';
 import 'package:b_green/page/meandrawer.dart';
 import 'package:b_green/page/statusiot.dart';
 import 'package:b_green/widget/bottomnav.dart';
@@ -8,6 +10,10 @@ import 'package:b_green/core/color.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:http/http.dart';
+import 'package:http/http.dart' as http;
+import 'dart:typed_data';
+import 'dart:convert';
 //import 'package:begreen/data/category_model.dart';
 //import 'package:begreen/data/plant_data.dart';
 //import 'package:begreen/page/details_page.dart';
@@ -137,6 +143,9 @@ class _HomePageState extends State<HomePage> {
 }
 
 File? _image, _croppedFile;
+var cropim;
+int cropcheck = 0;
+String message = "";
 
 class CameraGalleryDemo extends StatefulWidget {
   const CameraGalleryDemo({super.key});
@@ -150,7 +159,8 @@ class _CameraGalleryDemoState extends State<CameraGalleryDemo> {
   ///static Future<File> Function(File file) cropImage
   // Function to get image from the camera
   Future<void> _getImageFromCamera() async {
-    final image = await ImagePicker().pickImage(source: ImageSource.camera);
+    cropcheck = 0;
+    var image = await ImagePicker().pickImage(source: ImageSource.camera);
     //XFile? file = await ImagePicker().pickImage(source: ImageSource.camera);
     if (image == null) return;
 
@@ -169,23 +179,24 @@ class _CameraGalleryDemoState extends State<CameraGalleryDemo> {
     try {
       if (_image != null) {
         print("crop_intiated");
-        final Cropped = await ImageCropper().cropImage(
+        cropim = await ImageCropper().cropImage(
             sourcePath: _image!.path,
             compressFormat: ImageCompressFormat.jpg,
             compressQuality: 100,
             uiSettings: [
               AndroidUiSettings(
                 toolbarTitle: 'Cropper',
-                // toolbarColor: Colors.deepOrange,
+                toolbarColor: Colors.deepOrange,
                 // toolbarWidgetColor: Colors.white,
                 // initAspectRatio: CropAspectRatioPreset.original,
                 //lockAspectRatio: false
               ),
             ]);
-        if (Cropped != null) {
+        if (cropim != null) {
           setState(() {
-            _croppedFile = File(Cropped.path);
-            _image = File(Cropped.path);
+            _croppedFile = File(cropim.path);
+            _image = File(cropim.path);
+            cropcheck = 1;
           });
         }
       }
@@ -197,7 +208,7 @@ class _CameraGalleryDemoState extends State<CameraGalleryDemo> {
   // Function to get image from the gallery
   Future<void> _getImageFromGallery() async {
     final image = await ImagePicker().pickImage(source: ImageSource.gallery);
-
+    cropcheck = 0;
     if (image == null) return;
 
     setState(() {
@@ -219,25 +230,36 @@ class _CameraGalleryDemoState extends State<CameraGalleryDemo> {
       drawer: MeanDrawer(),
       body: Column(
         children: [
-          ElevatedButton.icon(
-              onPressed: () {},
+          /*ElevatedButton.icon(
+              onPressed: () {
+                //uploadimage(_image);
+              },
               icon: Icon(Icons.upload),
-              label: Text("upload")),
-          Center(
-            child: _image == null
-                ? const Text('No image selected.')
-                : Image.file(_image!),
+              label: Text("upload")),*/
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Center(
+                child: _image == null
+                    ? Center(
+                        child: const Text(
+                        'No image selected.',
+                        selectionColor: Colors.blue,
+                      ))
+                    : Image.file(_image!),
+              ),
+            ],
           ),
         ],
       ),
       floatingActionButton: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          FloatingActionButton(
+          /* FloatingActionButton(
             onPressed: _cropImage,
             tooltip: 'Crop_image',
             child: const Icon(Icons.crop),
-          ),
+          ),*/
           FloatingActionButton(
             onPressed: _getImageFromCamera,
             tooltip: 'Take a photo',
@@ -268,49 +290,63 @@ Reference referenceimage_up = referencedirimage.child('imagename');
 String image_url = '';
 
 class _cropwindowState extends State<cropwindow> {
-  Future<void> upimage() async {
-      try {
-        await referenceimage_up.putFile(File(_image!.path));
-        image_url = await referenceimage_up.getDownloadURL();
-      } catch (e) {
-        print(e);
-      }
+  Future<void> onUploadImage() async {
+    //File imagefile = _croppedFile; //convert to bytes
+    String url =
+        "http://ec2-43-205-135-176.ap-south-1.compute.amazonaws.com:8080/disease?f=";
+    Uint8List imagebytes = await _croppedFile!.readAsBytes();
+    String base64string =
+        base64.encode(imagebytes); //convert bytes to base64 string
+    
+    String parsedData = Uri.encodeComponent(base64string);
+    url = url + parsedData;
+   // print(url);
+    fecthdata(url);
+  }
+
+  /* Future<void> upimage() async {
+    try {
+      await referenceimage_up.putFile(File(_image!.path));
+      image_url = await referenceimage_up.getDownloadURL();
+    } catch (e) {
+      print(e);
     }
+  }*/
+
   Future<void> cropImage() async {
     print("croping");
     try {
       if (_image != null) {
         print("crop_intiated");
-        final Cropped = await ImageCropper().cropImage(
+        var Cropped = await ImageCropper().cropImage(
             sourcePath: _image!.path,
             compressFormat: ImageCompressFormat.jpg,
             compressQuality: 100,
             uiSettings: [
               AndroidUiSettings(
-                toolbarTitle: 'Cropper',
-                // toolbarColor: Colors.deepOrange,
-                // toolbarWidgetColor: Colors.white,
-                // initAspectRatio: CropAspectRatioPreset.original,
-                //lockAspectRatio: false
-              ),
+                  toolbarTitle: 'Cropper',
+                  // toolbarColor: Colors.deepOrange,
+                  // toolbarWidgetColor: Colors.white,
+                  initAspectRatio: CropAspectRatioPreset.square,
+                  lockAspectRatio: true),
             ]);
         if (Cropped != null) {
           setState(() {
             _croppedFile = File(Cropped.path);
             _image = File(Cropped.path);
+            cropcheck = 1;
           });
         }
       }
     } catch (e) {
       print(e);
     }
-  
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Crop image  for better result")),
+      appBar: AppBar(title: Text("Crop image")),
       body: Center(
         child: _image == null
             ? const Text('No image selected.')
@@ -324,7 +360,24 @@ class _cropwindowState extends State<cropwindow> {
           child: const Icon(Icons.crop),
         ),
         ElevatedButton.icon(
-          onPressed: upimage,
+          onPressed: () {
+            if (cropcheck == 1) {
+              //upimage();
+              onUploadImage();
+            } else {
+              print("crop check_activated $cropcheck");
+              final snackBar = SnackBar(
+                content: const Text('Crop photo'),
+                action: SnackBarAction(
+                  label: 'Undo',
+                  onPressed: () {
+                    // Some code to undo the change.
+                  },
+                ),
+              );
+              ScaffoldMessenger.of(context).showSnackBar(snackBar);
+            }
+          },
           icon: Icon(Icons.upload_file),
           label: Text("Process image"),
         )
