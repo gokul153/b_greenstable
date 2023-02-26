@@ -53,7 +53,7 @@ class _statusiotState extends State<statusiot> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("B_green"),
+        title: Text("LIVE Time Analyser"),
         backgroundColor: (Colors.green),
       ),
       drawer: MeanDrawer(),
@@ -77,7 +77,7 @@ class _statusiotState extends State<statusiot> {
                   list.clear();
                   list = map.values.toList();
                   print("the list returened is $list");
-                  dynamic water = list[0].toString();
+                  dynamic water = list[1].toString();
                   //  print(moisture);
 
                   wet = double.parse(water);
@@ -86,9 +86,11 @@ class _statusiotState extends State<statusiot> {
                   return ListView.builder(
                       itemCount: 1,
                       itemBuilder: (context, index) {
-                        return ListTile(
-                          title: Text("Moisture Level"),
-                          subtitle: Text(list[0].toString()),
+                        return Center(
+                          child: ListTile(
+                       //     title: Text("Moisture Level",textAlign: TextAlign.center,),
+                         //   subtitle: Text(list[0].toString()),
+                          ),
                         );
                       });
                 }
@@ -112,7 +114,7 @@ class _statusiotState extends State<statusiot> {
                     widget: Container(
                         child: Text(wet.toString(),
                             style: TextStyle(
-                                fontSize: 25, fontWeight: FontWeight.bold))),
+                                fontSize: 50, fontWeight: FontWeight.bold))),
                     angle: 90,
                     positionFactor: 0.5)
               ])
@@ -125,10 +127,12 @@ class _statusiotState extends State<statusiot> {
                       title: Text(
                         snapshot.child('moisture').value.toString(),
                         textAlign: TextAlign.center,
+                        style: TextStyle(fontFamily: 'Roboto',fontSize: 45),
                       ),
                     );
                   }),
             ),
+            
             /*  Center(
               child: Container(
                 height: 100,
