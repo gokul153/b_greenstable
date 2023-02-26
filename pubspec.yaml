@@ -43,6 +43,7 @@ dependencies:
   image_cropper: ^3.0.1
   firebase_storage: ^11.0.14
   lite_rolling_switch: ^1.0.1
+  flushbar: ^1.10.4
 
 dev_dependencies:
   flutter_test:

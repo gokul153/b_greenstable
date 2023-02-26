@@ -5,6 +5,8 @@ import 'package:b_green/function.dart';
 import 'package:b_green/page/meandrawer.dart';
 import 'package:b_green/page/statusiot.dart';
 import 'package:b_green/widget/bottomnav.dart';
+import 'package:flushbar/flushbar.dart';
+import 'package:flushbar/flushbar_route.dart';
 import 'package:flutter/material.dart';
 import 'package:b_green/core/color.dart';
 import 'package:image_cropper/image_cropper.dart';
@@ -33,6 +35,14 @@ class _HomePageState extends State<HomePage> {
     controller = PageController(viewportFraction: 0.6, initialPage: 0);
     super.initState();
   }
+
+  void showTopSnackBar(BuildContext context) => Flushbar(
+        icon: Icon(Icons.notifications_active),
+        title: "Agriculture Department",
+        message: "Regarding seed action",
+        duration: Duration(seconds: 3),
+        flushbarPosition: FlushbarPosition.TOP,
+      )..show(context);
 
   @override
   Widget build(BuildContext context) {
@@ -74,60 +84,126 @@ class _HomePageState extends State<HomePage> {
         ),
         drawer: MeanDrawer(),
         body: SingleChildScrollView(
-            child:
-                Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          Padding(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 15.0, vertical: 20.0),
-              child: Row(children: [
-                Container(
-                  height: 45.0,
-                  width: 300.0,
-                  padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                  decoration: BoxDecoration(
-                    color: white,
-                    border: Border.all(color: green),
-                    boxShadow: [
-                      BoxShadow(
-                        color: green.withOpacity(0.15),
-                        blurRadius: 10,
-                        offset: const Offset(0, 0),
-                      ),
-                    ],
-                    borderRadius: BorderRadius.circular(10.0),
-                  ),
-                  child: Row(
-                    children: [
-                      const SizedBox(
-                        height: 45,
-                        width: 200,
-                        child: TextField(
-                          decoration: InputDecoration(
-                            border: InputBorder.none,
-                            hintText: 'Search',
+            child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+              Padding(
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 15.0, vertical: 20.0),
+                  child: Row(children: [
+                    Container(
+                      height: 45.0,
+                      width: 300.0,
+                      padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                      decoration: BoxDecoration(
+                        color: white,
+                        border: Border.all(color: green),
+                        boxShadow: [
+                          BoxShadow(
+                            color: green.withOpacity(0.15),
+                            blurRadius: 10,
+                            offset: const Offset(0, 0),
                           ),
-                        ),
+                        ],
+                        borderRadius: BorderRadius.circular(10.0),
                       ),
-                      Image.asset(
-                        'assets/icons/search.png',
-                        height: 25,
-                      )
-                    ],
+                      child: Row(
+                        children: [
+                          const SizedBox(
+                            height: 45,
+                            width: 200,
+                            child: TextField(
+                              decoration: InputDecoration(
+                                border: InputBorder.none,
+                                hintText: 'Search',
+                              ),
+                            ),
+                          ),
+                          Image.asset(
+                            'assets/icons/search.png',
+                            height: 25,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 5),
+                            child: IconButton(
+                              onPressed: () {
+                                //  showFlushbar(context: context, flushbar: flushbar),
+                                showTopSnackBar(context);
+                              },
+                              icon: Icon(
+                                Icons.notification_add_outlined,
+                                color: Colors.red,
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                    //    ElevatedButton.icon(onPressed: () {}, icon: Icon(Icons.details_outlined), label: Text("To veiw status")),
+                  ])),
+              Padding(
+                padding: const EdgeInsets.all(4.0),
+                child: Container(
+                  child: Image.asset('assets/images/IoT_smart-farming.png',
+                      width: MediaQuery.of(context).size.width * 0.95,
+                      height: 400),
+                ),
+              ),
+              Center(
+                child: Container(
+                  width: MediaQuery.of(context).size.width * 0.95,
+                  height: MediaQuery.of(context).size.width * 0.15,
+                  child: ElevatedButton.icon(
+                      onPressed: () {
+                        // statusiot();
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const statusiot()),
+                        );
+                      },
+                      style: ElevatedButton.styleFrom(
+                        primary: Colors.green,
+                        padding: EdgeInsets.symmetric(
+                            horizontal: 2,
+                            vertical: 10), // Set the padding of the button
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20)),
+                      ),
+                      icon: const Icon(Icons.details_outlined),
+                      label: const Text("Live status and Control")),
+                ),
+              ),
+              Center(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 2.5),
+                  child: Container(
+                    width: MediaQuery.of(context).size.width * 0.95,
+                    height: MediaQuery.of(context).size.width * 0.15,
+                    child: ElevatedButton.icon(
+                        onPressed: () {
+                          // statusiot();
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const statusiot()),
+                          );
+                        },
+                        style: ElevatedButton.styleFrom(
+                          primary: Colors.green,
+                          padding: EdgeInsets.symmetric(
+                              horizontal: 2,
+                              vertical: 10), // Set the padding of the button
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20)),
+                        ),
+                        icon: const Icon(Icons.details_outlined),
+                        label: const Text("Disease Analysics")),
                   ),
                 ),
-                //    ElevatedButton.icon(onPressed: () {}, icon: Icon(Icons.details_outlined), label: Text("To veiw status")),
-              ])),
-          ElevatedButton.icon(
-              onPressed: () {
-                // statusiot();
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const statusiot()),
-                );
-              },
-              icon: const Icon(Icons.details_outlined),
-              label: const Text("View status")),
-          ElevatedButton.icon(
+              ),
+              /*     ElevatedButton.icon(
             icon: const Icon(Icons.camera_alt),
             label: const Text("take photo"),
             onPressed: () {
@@ -137,8 +213,8 @@ class _HomePageState extends State<HomePage> {
                     builder: (context) => const CameraGalleryDemo()),
               );
             },
-          ),
-        ])));
+          ),*/
+            ])));
   }
 }
 
@@ -297,10 +373,10 @@ class _cropwindowState extends State<cropwindow> {
     Uint8List imagebytes = await _croppedFile!.readAsBytes();
     String base64string =
         base64.encode(imagebytes); //convert bytes to base64 string
-    
+
     String parsedData = Uri.encodeComponent(base64string);
     url = url + parsedData;
-   // print(url);
+    // print(url);
     fecthdata(url);
   }
 
