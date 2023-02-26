@@ -12,6 +12,7 @@ import 'package:lite_rolling_switch/lite_rolling_switch.dart';
 import 'package:syncfusion_flutter_gauges/gauges.dart';
 import 'package:flutter/services.dart';
 import 'package:cron/cron.dart';
+import 'package:b_green/page/orginal_splash.dart';
 
 //import 'firebase_options.dart';
 
@@ -19,9 +20,7 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   final cron = Cron();
-  cron.schedule(Schedule.parse('*/1 * * * * *'), () async=> {
-
-  });
+  cron.schedule(Schedule.parse('*/1 * * * * *'), () async => {});
 //  cron.schedule(Schedule.parse(''),()as)
 
   runApp(const MyApp());
@@ -43,7 +42,7 @@ class MyApp extends StatelessWidget {
         fontFamily: 'Roboto',
       ),
       // home: HomePage(),
-      home: const SplashPage(),
+      home: FirstScreen(),
     );
   }
 }

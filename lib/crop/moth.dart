@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 
-class Pigeon extends StatelessWidget {
-  const Pigeon({super.key});
+class Moth extends StatelessWidget {
+  const Moth({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,7 @@ class Pigeon extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
       //  crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-           Text(" pigeon will be the best choice",
+           Text(" Moth will be your best choice",
            style: TextStyle(fontSize: 25)),
            
           Text("                                                                                                                             "),
@@ -30,7 +30,7 @@ class Pigeon extends StatelessWidget {
             color: Color.fromARGB(255, 240, 229, 229),
             child: Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Text("Pigeon pea, also known as red gram or tur, is an important pulse crop grown in Kerala. The best time to cultivate pigeon pea in Kerala is during the monsoon season, between June and September.Pigeon pea requires a warm and humid climate with good rainfall for its growth. The crop is usually sown in June and harvested in September. However, in some parts of the state, it is also grown during the winter season, between October and February, as a mixed crop with other crops such as coconut and areca nut.The yield of pigeon pea in Kerala varies depending on the variety, soil type, climate, and other factors. On average, the yield of pigeon pea in Kerala is around 1.5 to 2 tons per hectare.Pigeon pea is an important crop for small and marginal farmers in Kerala, and it is used for various purposes such as making dals, soups, and curries. It is also used as an animal feed and in the production of organic fertilizers. The state government has also taken several initiatives to promote pigeon pea cultivation in the state and provide support to the farmers, including providing subsidies for planting materials and equipment, and setting up processing units to help farmers with value addition. ",
+              child: Text("Mothbean, also known as matki or Turkish gram, is a minor pulse crop in Kerala. It is mainly grown as a rabi or winter season crop, between October and February.Mothbean requires a warm and dry climate for its growth, and the winter season in Kerala provides the ideal conditions for its cultivation. The crop is usually sown in October and harvested in February.The yield of mothbean in Kerala varies depending on the variety, soil type, climate, and other factors. On average, the yield of mothbean in Kerala is around 6-7 quintals per hectare.Mothbean is an important crop for small and marginal farmers in Kerala, and it is used for various purposes such as making dals, soups, and curries. It is also used as animal feed and as a soil enriching crop due to its nitrogen-fixing ability.However, mothbean cultivation in Kerala is limited due to the low demand for the crop and the availability of other more profitable crops such as paddy and banana.",
               style: TextStyle(fontSize: 20,)),
             ),
           ),
@@ -43,7 +43,7 @@ class Pigeon extends StatelessWidget {
               
                decoration: BoxDecoration(
                   image: DecorationImage(
-                    image: AssetImage('assets/images/pigeonpeas.png',
+                    image: AssetImage('assets/images/mothbeeans.png',
                     
                     ),
                     fit: BoxFit.fill,
