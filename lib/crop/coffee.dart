@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 
-class Pigeon extends StatelessWidget {
-  const Pigeon({super.key});
+class Coffee extends StatelessWidget {
+  const Coffee({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,7 @@ class Pigeon extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
       //  crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-           Text(" pigeon will be the best choice",
+           Text(" Coffee will be your best choice",
            style: TextStyle(fontSize: 25)),
            
           Text("                                                                                                                             "),
@@ -30,7 +30,7 @@ class Pigeon extends StatelessWidget {
             color: Color.fromARGB(255, 240, 229, 229),
             child: Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Text("Pigeon pea, also known as red gram or tur, is an important pulse crop grown in Kerala. The best time to cultivate pigeon pea in Kerala is during the monsoon season, between June and September.Pigeon pea requires a warm and humid climate with good rainfall for its growth. The crop is usually sown in June and harvested in September. However, in some parts of the state, it is also grown during the winter season, between October and February, as a mixed crop with other crops such as coconut and areca nut.The yield of pigeon pea in Kerala varies depending on the variety, soil type, climate, and other factors. On average, the yield of pigeon pea in Kerala is around 1.5 to 2 tons per hectare.Pigeon pea is an important crop for small and marginal farmers in Kerala, and it is used for various purposes such as making dals, soups, and curries. It is also used as an animal feed and in the production of organic fertilizers. The state government has also taken several initiatives to promote pigeon pea cultivation in the state and provide support to the farmers, including providing subsidies for planting materials and equipment, and setting up processing units to help farmers with value addition. ",
+              child: Text("Coffee is an important commercial crop in Kerala and is mainly grown in the hilly areas of the state. The cultivation of coffee in Kerala is mainly done in the districts of Wayanad, Idukki, and Palakkad.The peak season for coffee cultivation in Kerala is between September and December, during the post-monsoon season. Coffee requires a cool and humid climate with well-distributed rainfall for its growth, and the post-monsoon season in Kerala provides the ideal conditions for its cultivation.The major coffee varieties grown in Kerala include Arabica and Robusta. Arabica coffee is mainly grown in the higher altitudes above 1000 meters, while Robusta coffee is grown in the lower altitudes.The yield of coffee in Kerala varies depending on the variety, soil type, climate, and other factors. On average, the yield of Arabica coffee in Kerala is around 700-800 kg per hectare, while the yield of Robusta coffee is around 1000-1200 kg per hectare.Coffee grown in Kerala is known for its quality and aroma, and it is used for various purposes such as making filter coffee, instant coffee, and espresso. The state government has also taken several initiatives to promote coffee cultivation in the state and provide support to the farmers, including providing subsidies for planting materials and equipment, and setting up coffee processing units to help farmers with value addition. ",
               style: TextStyle(fontSize: 20,)),
             ),
           ),
@@ -43,7 +43,7 @@ class Pigeon extends StatelessWidget {
               
                decoration: BoxDecoration(
                   image: DecorationImage(
-                    image: AssetImage('assets/images/pigeonpeas.png',
+                    image: AssetImage('assets/images/cofee.png',
                     
                     ),
                     fit: BoxFit.fill,
@@ -61,3 +61,4 @@ class Pigeon extends StatelessWidget {
     );
   }
 }
+

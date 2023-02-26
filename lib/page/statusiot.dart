@@ -83,16 +83,7 @@ class _statusiotState extends State<statusiot> {
                   wet = double.parse(water);
                   print("moisture is $water");
                   print("wet is $wet");
-                  return ListView.builder(
-                      itemCount: 1,
-                      itemBuilder: (context, index) {
-                        return Center(
-                          child: ListTile(
-                       //     title: Text("Moisture Level",textAlign: TextAlign.center,),
-                         //   subtitle: Text(list[0].toString()),
-                          ),
-                        );
-                      });
+                 
                 }
               },
             )),

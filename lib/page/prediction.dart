@@ -1,6 +1,26 @@
+import 'package:b_green/crop/apple.dart';
+import 'package:b_green/crop/banana.dart';
+import 'package:b_green/crop/blackgrams.dart';
+import 'package:b_green/crop/chickpeas.dart';
+import 'package:b_green/crop/coconut.dart';
+import 'package:b_green/crop/coffee.dart';
+import 'package:b_green/crop/cotton.dart';
+import 'package:b_green/crop/grape.dart';
+import 'package:b_green/crop/jute.dart';
+import 'package:b_green/crop/kidneybeans.dart';
+import 'package:b_green/crop/lentil.dart';
+import 'package:b_green/crop/maize.dart';
+import 'package:b_green/crop/mango.dart';
+import 'package:b_green/crop/moth.dart';
+import 'package:b_green/crop/mung.dart';
+import 'package:b_green/crop/muskmelon.dart';
 import 'package:b_green/crop/orange.dart';
+import 'package:b_green/crop/papaya.dart';
 import 'package:b_green/crop/pigeonpeas.dart';
+import 'package:b_green/crop/pomegranate.dart';
 import 'package:b_green/crop/result.dart';
+import 'package:b_green/crop/rice.dart';
+import 'package:b_green/crop/watermelon.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -204,14 +224,175 @@ class _PredictState extends State<Predict> {
                           ));
                       //   Navigator.of(context).pushReplacementNamed('/Orange');
                     }
-                     if (cropr.contains("Pigeonpeas")) {
+                     if (cropr.contains("Pigeon")) {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => pigeon(),
+                            builder: (context) => Pigeon(),
                           ));
                       //   Navigator.of(context).pushReplacementNamed('/Orange');
                     }
+                    if (cropr.contains("Rice")) {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Rice(),
+                          ));
+                      //   Navigator.of(context).pushReplacementNamed('/Orange');
+                    }
+                    if (cropr.contains("Maize")) {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Maize(),
+                          ));
+                      //   Navigator.of(context).pushReplacementNamed('/Orange');
+                    }
+                    if (cropr.contains("Chickpeas")) {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Chickpeas(),
+                          ));
+                      //   Navigator.of(context).pushReplacementNamed('/Orange');
+                    }
+                    if (cropr.contains("Kidneybeans")) {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Kidneybeans(),
+                          ));
+                      //   Navigator.of(context).pushReplacementNamed('/Orange');
+                    }
+                    if (cropr.contains("Moth")) {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Moth(),
+                          ));
+                      //   Navigator.of(context).pushReplacementNamed('/Orange');
+                    }
+                    if (cropr.contains("Mung")) {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Mung(),
+                          ));
+                      //   Navigator.of(context).pushReplacementNamed('/Orange');
+                    }
+                    if (cropr.contains("Blackgram")) {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Blackgrams(),
+                          ));
+                      //   Navigator.of(context).pushReplacementNamed('/Orange');
+                    }
+                    if (cropr.contains("Lentil")) {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Lentil(),
+                          ));
+                      //   Navigator.of(context).pushReplacementNamed('/Orange');
+                    }
+                    if (cropr.contains("Pomegranate")) {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Pomegranate(),
+                          ));
+                      //   Navigator.of(context).pushReplacementNamed('/Orange');
+                    }
+                    if (cropr.contains("Banana")) {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Banana(),
+                          ));
+                      //   Navigator.of(context).pushReplacementNamed('/Orange');
+                    }
+                    if (cropr.contains("Mango")) {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Mango(),
+                          ));
+                      //   Navigator.of(context).pushReplacementNamed('/Orange');
+                    }
+                    if (cropr.contains("Grape")) {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Grape(),
+                          ));
+                      //   Navigator.of(context).pushReplacementNamed('/Orange');
+                    }
+                    if (cropr.contains("Watermelon")) {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Watermelon(),
+                          ));
+                      //   Navigator.of(context).pushReplacementNamed('/Orange');
+                    }
+                    if (cropr.contains("Muskmelon")) {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Muskmelon(),
+                          ));
+                      //   Navigator.of(context).pushReplacementNamed('/Orange');
+                    }
+                    if (cropr.contains("Apple")) {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Apple(),
+                          ));
+                      //   Navigator.of(context).pushReplacementNamed('/Orange');
+                    }
+                    if (cropr.contains("Papaya")) {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Papaya(),
+                          ));
+                      //   Navigator.of(context).pushReplacementNamed('/Orange');
+                    }
+                    if (cropr.contains("Coconut")) {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Coconut(),
+                          ));
+                      //   Navigator.of(context).pushReplacementNamed('/Orange');
+                    }
+                    if (cropr.contains("Cotton")) {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Cotton(),
+                          ));
+                      //   Navigator.of(context).pushReplacementNamed('/Orange');
+                    }
+                    if (cropr.contains("Jute")) {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Jute(),
+                          ));
+                      //   Navigator.of(context).pushReplacementNamed('/Orange');
+                    }
+                    if (cropr.contains("Coffee")) {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Coffee(),
+                          ));
+                      //   Navigator.of(context).pushReplacementNamed('/Orange');
+                    }
+
                  /*   Navigator.push(
                         context,
                         MaterialPageRoute(

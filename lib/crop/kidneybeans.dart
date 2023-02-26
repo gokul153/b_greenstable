@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 
-class Pigeon extends StatelessWidget {
-  const Pigeon({super.key});
+class Kidneybeans extends StatelessWidget {
+  const Kidneybeans({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,7 @@ class Pigeon extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
       //  crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-           Text(" pigeon will be the best choice",
+           Text(" KidneyBean will be your best choice",
            style: TextStyle(fontSize: 25)),
            
           Text("                                                                                                                             "),
@@ -30,7 +30,7 @@ class Pigeon extends StatelessWidget {
             color: Color.fromARGB(255, 240, 229, 229),
             child: Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Text("Pigeon pea, also known as red gram or tur, is an important pulse crop grown in Kerala. The best time to cultivate pigeon pea in Kerala is during the monsoon season, between June and September.Pigeon pea requires a warm and humid climate with good rainfall for its growth. The crop is usually sown in June and harvested in September. However, in some parts of the state, it is also grown during the winter season, between October and February, as a mixed crop with other crops such as coconut and areca nut.The yield of pigeon pea in Kerala varies depending on the variety, soil type, climate, and other factors. On average, the yield of pigeon pea in Kerala is around 1.5 to 2 tons per hectare.Pigeon pea is an important crop for small and marginal farmers in Kerala, and it is used for various purposes such as making dals, soups, and curries. It is also used as an animal feed and in the production of organic fertilizers. The state government has also taken several initiatives to promote pigeon pea cultivation in the state and provide support to the farmers, including providing subsidies for planting materials and equipment, and setting up processing units to help farmers with value addition. ",
+              child: Text("Kidney beans, also known as rajma, are not a commonly cultivated crop in Kerala. The climate and soil conditions in Kerala are not suitable for the growth of kidney beans, which require a cooler and drier climate with well-drained soil.However, kidney beans can be grown as a rabi crop in some parts of Kerala, especially in the high-altitude regions of the Western Ghats. The ideal time for planting kidney beans in Kerala is between October and November, and the crop can be harvested after around 90-100 days of sowing.The yield of kidney beans in Kerala varies depending on various factors such as soil type, climate, and cultivation practices. On average, the yield of kidney beans in Kerala is around 500-600 kg per hectare.Kidney beans are an important source of protein and other nutrients, and they are used for various culinary purposes, such as making curries, stews, and salads. However, due to the challenging climatic conditions in Kerala, kidney bean cultivation is not very popular among farmers in the state, and the crop is mostly imported from other states.",
               style: TextStyle(fontSize: 20,)),
             ),
           ),
@@ -43,7 +43,7 @@ class Pigeon extends StatelessWidget {
               
                decoration: BoxDecoration(
                   image: DecorationImage(
-                    image: AssetImage('assets/images/pigeonpeas.png',
+                    image: AssetImage('assets/images/kidneybeans.png',
                     
                     ),
                     fit: BoxFit.fill,
@@ -61,3 +61,4 @@ class Pigeon extends StatelessWidget {
     );
   }
 }
+

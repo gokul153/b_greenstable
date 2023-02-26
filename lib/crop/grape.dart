@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 
-class Pigeon extends StatelessWidget {
-  const Pigeon({super.key});
+class Grape extends StatelessWidget {
+  const Grape({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,7 @@ class Pigeon extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
       //  crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-           Text(" pigeon will be the best choice",
+           Text(" Grape will be your best choice",
            style: TextStyle(fontSize: 25)),
            
           Text("                                                                                                                             "),
@@ -30,7 +30,7 @@ class Pigeon extends StatelessWidget {
             color: Color.fromARGB(255, 240, 229, 229),
             child: Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Text("Pigeon pea, also known as red gram or tur, is an important pulse crop grown in Kerala. The best time to cultivate pigeon pea in Kerala is during the monsoon season, between June and September.Pigeon pea requires a warm and humid climate with good rainfall for its growth. The crop is usually sown in June and harvested in September. However, in some parts of the state, it is also grown during the winter season, between October and February, as a mixed crop with other crops such as coconut and areca nut.The yield of pigeon pea in Kerala varies depending on the variety, soil type, climate, and other factors. On average, the yield of pigeon pea in Kerala is around 1.5 to 2 tons per hectare.Pigeon pea is an important crop for small and marginal farmers in Kerala, and it is used for various purposes such as making dals, soups, and curries. It is also used as an animal feed and in the production of organic fertilizers. The state government has also taken several initiatives to promote pigeon pea cultivation in the state and provide support to the farmers, including providing subsidies for planting materials and equipment, and setting up processing units to help farmers with value addition. ",
+              child: Text("Grapes are not commonly grown in Kerala due to the warm and humid climate, which is not suitable for grape cultivation. However, some farmers have started cultivating grapes in some parts of the state using advanced techniques such as trellising, pruning, and canopy management.The best time to plant grapevines in Kerala is during the winter season, between November and February, when the climate is relatively cool and dry. The vines require a cold climate to bear fruit, so they need to be planted at high altitudes, where the temperature is lower.Grapevines in Kerala usually start bearing fruit in 2-3 years after planting, and the fruit is usually harvested between December and January. However, the yield of grapes in Kerala is still relatively low compared to other grape-growing regions due to the challenging climate conditions.The varieties of grapes grown in Kerala include Thompson Seedless, Black Muscat, and Bangalore Blue. The average yield of grapes in Kerala is around 10-12 tons per hectare. Grapes grown in Kerala are mainly used for table purposes and making juice. However, due to the limited production, the state imports a significant amount of grapes from other states to meet the demand. ",
               style: TextStyle(fontSize: 20,)),
             ),
           ),
@@ -43,7 +43,7 @@ class Pigeon extends StatelessWidget {
               
                decoration: BoxDecoration(
                   image: DecorationImage(
-                    image: AssetImage('assets/images/pigeonpeas.png',
+                    image: AssetImage('assets/images/grapes.png',
                     
                     ),
                     fit: BoxFit.fill,
@@ -61,3 +61,5 @@ class Pigeon extends StatelessWidget {
     );
   }
 }
+
+

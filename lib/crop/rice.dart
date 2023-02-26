@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 
-class Pigeon extends StatelessWidget {
-  const Pigeon({super.key});
+class Rice extends StatelessWidget {
+  const Rice({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,7 @@ class Pigeon extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
       //  crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-           Text(" pigeon will be the best choice",
+           Text(" Rice will be the best choice",
            style: TextStyle(fontSize: 25)),
            
           Text("                                                                                                                             "),
@@ -30,7 +30,7 @@ class Pigeon extends StatelessWidget {
             color: Color.fromARGB(255, 240, 229, 229),
             child: Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Text("Pigeon pea, also known as red gram or tur, is an important pulse crop grown in Kerala. The best time to cultivate pigeon pea in Kerala is during the monsoon season, between June and September.Pigeon pea requires a warm and humid climate with good rainfall for its growth. The crop is usually sown in June and harvested in September. However, in some parts of the state, it is also grown during the winter season, between October and February, as a mixed crop with other crops such as coconut and areca nut.The yield of pigeon pea in Kerala varies depending on the variety, soil type, climate, and other factors. On average, the yield of pigeon pea in Kerala is around 1.5 to 2 tons per hectare.Pigeon pea is an important crop for small and marginal farmers in Kerala, and it is used for various purposes such as making dals, soups, and curries. It is also used as an animal feed and in the production of organic fertilizers. The state government has also taken several initiatives to promote pigeon pea cultivation in the state and provide support to the farmers, including providing subsidies for planting materials and equipment, and setting up processing units to help farmers with value addition. ",
+              child: Text("Rice is a major staple crop in Kerala and is grown throughout the year. However, the peak season for rice cultivation in Kerala is during the monsoon season, from June to September.The main varieties of rice grown in Kerala include Jaya, Veliyan, Navara, Jeerakasala, and Basmati. Rice cultivation in Kerala is mainly done in the low-lying areas, especially in the districts of Thrissur, Palakkad, Alappuzha, and Kottayam.The yield of rice in Kerala varies depending on the variety, soil type, climate, and other factors. On average, the yield of rice in Kerala is around 2-3 tons per hectare.Kerala has a strong tradition of rice cultivation using traditional organic farming methods, which helps to maintain soil fertility and preserve the environment. The state government has also taken several initiatives to promote organic rice cultivation and provide support to the farmers, including setting up organic farming clusters, providing training and financial assistance, and promoting the use of traditional rice varieties.Rice is a staple food in Kerala, and it is used for various purposes such as making rice dishes, breakfast items like dosa and idli, and snacks like murukku and pappadam. Rice is also an important crop for the state's economy, as it provides employment opportunities for a large number of farmers and helps to support the local food industry.",
               style: TextStyle(fontSize: 20,)),
             ),
           ),
@@ -43,7 +43,7 @@ class Pigeon extends StatelessWidget {
               
                decoration: BoxDecoration(
                   image: DecorationImage(
-                    image: AssetImage('assets/images/pigeonpeas.png',
+                    image: AssetImage('assets/images/rice..png',
                     
                     ),
                     fit: BoxFit.fill,
@@ -61,3 +61,5 @@ class Pigeon extends StatelessWidget {
     );
   }
 }
+
+
