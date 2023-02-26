@@ -88,7 +88,7 @@ class _statusiotState extends State<statusiot> {
                       itemBuilder: (context, index) {
                         return ListTile(
                           title: Text("Moisture Level"),
-                          subtitle: Text(list[0].toString()),
+                          subtitle: Text(list[1].toString()),
                         );
                       });
                 }

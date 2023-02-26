@@ -23,7 +23,7 @@ class MeanDrawer extends StatelessWidget {
             width: double.infinity,
             padding: EdgeInsets.all(20),
             //color: Theme.of(context).primaryColor,
-            color: Colors.green,
+            color: Colors.black,
             child: Center(
               child: Column(
                 children: <Widget>[
@@ -77,7 +77,7 @@ class MeanDrawer extends StatelessWidget {
             },
           ),
           ListTile(
-            leading: Icon(Icons.settings),
+            leading: Icon(Icons.live_tv_outlined),
             title: Text(
               'Live Data',
               style: TextStyle(
@@ -93,7 +93,7 @@ class MeanDrawer extends StatelessWidget {
             },
           ),
           ListTile(
-              leading: Icon(Icons.batch_prediction),
+              leading: Icon(Icons.batch_prediction_outlined),
               title: Text(
                 'Prediction',
                 style: TextStyle(
@@ -108,7 +108,7 @@ class MeanDrawer extends StatelessWidget {
                     ));
               }),
           ListTile(
-            leading: Icon(Icons.mail),
+            leading: Icon(Icons.analytics_outlined),
             title: Text(
               'Disease Analysics',
               style: TextStyle(
@@ -124,7 +124,7 @@ class MeanDrawer extends StatelessWidget {
             },
           ),
           ListTile(
-            leading: Icon(Icons.nature_outlined),
+            leading: Icon(Icons.notification_important),
             title: Text(
               'Yeild Notifier',
               style: TextStyle(
