@@ -117,6 +117,7 @@ class _PredictState extends State<Predict> {
                 border: OutlineInputBorder(),
               ),
             ),
+            SizedBox(height: 2.5,),
             TextFormField(
               controller: _ptextController,
               decoration: const InputDecoration(
@@ -124,6 +125,7 @@ class _PredictState extends State<Predict> {
                 border: OutlineInputBorder(),
               ),
             ),
+                 SizedBox(height: 2.5,),
             TextFormField(
               controller: _ktextController,
               decoration: const InputDecoration(
@@ -131,6 +133,7 @@ class _PredictState extends State<Predict> {
                 border: OutlineInputBorder(),
               ),
             ),
+                 SizedBox(height: 2.5,),
             TextFormField(
               controller: _phtextController,
               decoration: const InputDecoration(
@@ -138,6 +141,7 @@ class _PredictState extends State<Predict> {
                 border: OutlineInputBorder(),
               ),
             ),
+                 SizedBox(height: 2.5,),
             TextFormField(
               controller: _rtextController,
               decoration: const InputDecoration(
@@ -145,6 +149,7 @@ class _PredictState extends State<Predict> {
                 border: OutlineInputBorder(),
               ),
             ),
+                 SizedBox(height: 2.5,),
             MaterialButton(
               onPressed: () async {
                 print("butoon presed");
