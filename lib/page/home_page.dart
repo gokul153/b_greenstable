@@ -1,6 +1,16 @@
 import 'dart:io';
 
 //import 'package:b_green/function.dart';
+import 'package:b_green/disease/bacterial.dart';
+import 'package:b_green/disease/earlyblight.dart';
+import 'package:b_green/disease/healthy.dart';
+import 'package:b_green/disease/lateblight.dart';
+import 'package:b_green/disease/leafmould.dart';
+import 'package:b_green/disease/mosaic.dart';
+import 'package:b_green/disease/septoria.dart';
+import 'package:b_green/disease/spidermites.dart';
+import 'package:b_green/disease/targetspot.dart';
+import 'package:b_green/disease/yellowleaf.dart';
 import 'package:b_green/function.dart';
 import 'package:b_green/page/meandrawer.dart';
 import 'package:b_green/page/statusiot.dart';
@@ -377,8 +387,89 @@ class _cropwindowState extends State<cropwindow> {
     String parsedData = Uri.encodeComponent(base64string);
     url = url + parsedData;
     // print(url);
-    fecthdata(url);
-  }
+    http.Response response = await http.get(Uri.parse(url));
+    String disease = response.body;
+    setState(() {
+                    // cropr = "intial";
+
+                    disease = disease;
+                       });
+    
+                        if (disease.contains("Bacerial Spot")) {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Bacterial(),
+                          ));}
+                          if (disease.contains("Early Blight")) {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Early(),
+                          ));}
+                          if (disease.contains("Healthy")) {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Healthy(),
+                          ));}
+                          if (disease.contains("Late Blight")) {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Late(),
+                          ));
+                          }
+                          if (disease.contains("Leaf Mold")) {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Leafmould(),
+                          ));}
+                          if (disease.contains("Mosaic Virus")) {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Mosaic(),
+                          ));
+                          if (disease.contains("Septoria Leaf Spot")) {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Septoria(),
+                          ));
+                          if (disease.contains("Spider Mites")) {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Spider(),
+                          ));}
+                          if (disease.contains("Target Spot")) {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Targetspot(),
+                          ));}
+                          if (disease.contains("Yellow leaf Curl Virus")) {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Yellowleaf(),
+                          ));}
+                        
+                          
+                          
+
+                          
+
+
+                          }
+
+                          }
+                      //   Navigator.of(context).pushReplacementNamed('/Orange');
+                    }
+
+  
 
   /* Future<void> upimage() async {
     try {
@@ -461,3 +552,4 @@ class _cropwindowState extends State<cropwindow> {
     );
   }
 }
+                        

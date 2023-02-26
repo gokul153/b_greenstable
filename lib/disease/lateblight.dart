@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 
-class Banana extends StatelessWidget {
-  const Banana({super.key});
+class Late extends StatelessWidget {
+  const Late({super.key});
 
   @override
   Widget build(BuildContext context) {
