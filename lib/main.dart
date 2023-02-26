@@ -10,12 +10,19 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:http/http.dart';
 import 'package:lite_rolling_switch/lite_rolling_switch.dart';
 import 'package:syncfusion_flutter_gauges/gauges.dart';
+import 'package:flutter/services.dart';
+import 'package:cron/cron.dart';
 
 //import 'firebase_options.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  final cron = Cron();
+  cron.schedule(Schedule.parse('*/1 * * * * *'), () async=> {
+
+  });
+//  cron.schedule(Schedule.parse(''),()as)
 
   runApp(const MyApp());
 }
@@ -32,6 +39,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primaryColor: Colors.green, // Change the primary color
         // accentColor: Colors.red, // Change the accent color
+        backgroundColor: Colors.black,
         fontFamily: 'Roboto',
       ),
       // home: HomePage(),
@@ -42,4 +50,3 @@ class MyApp extends StatelessWidget {
 
 Map mapresponse = {};
 Map moisture = {};
-

@@ -82,7 +82,11 @@ class _FPageState extends State<FPage> {
       drawer: MeanDrawer(),
       body: Center(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
+            SizedBox(
+              height: 20,
+            ),
             Expanded(
                 child: StreamBuilder(
               stream: ref.onValue,
@@ -106,14 +110,23 @@ class _FPageState extends State<FPage> {
                   wet = double.parse(water);
                   print("moisture is $water");
                   print("wet is $wet");
-                  return ListView.builder(
-                      itemCount: 1,
-                      itemBuilder: (context, index) {
-                        return ListTile(
-                          title: Text("Moisture Level"),
-                          subtitle: Text(list[0].toString()),
-                        );
-                      });
+                  return Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 8.0),
+                    child: ListView.builder(
+                        itemCount: 1,
+                        itemBuilder: (context, index) {
+                          return ListTile(
+                            title: Center(
+                                child: Text(
+                              "Moisture Level",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  fontFamily: "Times New Roman", fontSize: 30),
+                            )),
+                            //   subtitle: Text(list[0].toString()),
+                          );
+                        }),
+                  );
                 }
               },
             )),
@@ -151,8 +164,9 @@ class _FPageState extends State<FPage> {
                   itemBuilder: (context, snapshot, animation, index) {
                     return ListTile(
                       title: Text(
-                        snapshot.child('moisture').value.toString(),
+                        "Updated value: ${snapshot.child('moisture').value.toString()}",
                         textAlign: TextAlign.center,
+                        style: TextStyle(fontSize: 20),
                       ),
                     );
                   }),
@@ -173,7 +187,7 @@ class _FPageState extends State<FPage> {
               ),
             ),*/
 
-            ElevatedButton(
+         /*   ElevatedButton(
               onPressed: () {
                 ref
                     // .child('1')
@@ -184,33 +198,36 @@ class _FPageState extends State<FPage> {
                     });
               },
               child: Text("Turn on!"),
-            ),
+            ),*/
             //ToggleButtons(children: children, isSelected: isSelected)
-            LiteRollingSwitch(
-              value: value1,
-              textOn: "on",
-              textOff: "off",
-              colorOn: Colors.greenAccent,
-              colorOff: Colors.red,
-              iconOn: Icons.water,
-              iconOff: Icons.water_damage,
-              textSize: 18,
-              onChanged: (bool position) {
-                print("button is $position");
-                if (position == true) {
-                  ref
-                      // .child('1')
-                      .set({'status': 1})
-                      .then((value) {})
-                      .onError((error, stackTrace) {
-                        print("error Occured \n");
-                      });
-                }
-                value1 = false;
-              },
-              onDoubleTap: () {},
-              onSwipe: () {},
-              onTap: () {},
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 8),
+              child: LiteRollingSwitch(
+                value: value1,
+                textOn: "on",
+                textOff: "off",
+                colorOn: Colors.greenAccent,
+                colorOff: Colors.red,
+                iconOn: Icons.water,
+                iconOff: Icons.water_damage,
+                textSize: 18,
+                onChanged: (bool position) {
+                  print("button is $position");
+                  if (position == true) {
+                    ref
+                        // .child('1')
+                        .set({'status': 1})
+                        .then((value) {})
+                        .onError((error, stackTrace) {
+                          print("error Occured \n");
+                        });
+                  }
+                  value1 = false;
+                },
+                onDoubleTap: () {},
+                onSwipe: () {},
+                onTap: () {},
+              ),
             ),
           ],
         ),
