@@ -5,6 +5,7 @@ import 'package:b_green/page/main_home.dart';
 import 'package:b_green/page/prediction.dart';
 import 'package:b_green/page/splash.dart';
 import 'package:b_green/page/statusiot.dart';
+import 'package:b_green/page/yeild_update.dart';
 import 'package:b_green/widget/bottomnav.dart';
 import 'package:flutter/material.dart';
 
@@ -36,7 +37,9 @@ class MeanDrawer extends StatelessWidget {
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
                       image: DecorationImage(
-                          image: NetworkImage('https://i.pravatar.cc/300')),
+                       //   image: NetworkImage('https://i.pravatar.cc/300')
+                          image: AssetImage('assets/images/MyLogoArt20230224083626.png'),
+                          ),
                     ),
                   ),
                   Text(
@@ -123,13 +126,18 @@ class MeanDrawer extends StatelessWidget {
           ListTile(
             leading: Icon(Icons.nature_outlined),
             title: Text(
-              'apple',
+              'Yeild Notifier',
               style: TextStyle(
                 fontSize: 18,
               ),
             ),
             onTap:(){
-                 //   builder: (context) => const CameraGalleryDemo()),
+               Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => yeild(appBar: AppBar(title: Text(""),)),
+                    ));
+            
                   
             },
           ),

@@ -44,6 +44,7 @@ class _PredictState extends State<Predict> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Home"),
+        backgroundColor: Colors.green,
       ),
       /*body: Container(
         child: SizedBox(
