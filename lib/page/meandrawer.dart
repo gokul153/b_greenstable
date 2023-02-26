@@ -23,7 +23,7 @@ class MeanDrawer extends StatelessWidget {
             width: double.infinity,
             padding: EdgeInsets.all(20),
             //color: Theme.of(context).primaryColor,
-            color: Colors.green,
+            color: Color.fromARGB(255, 0, 0, 0),
             child: Center(
               child: Column(
                 children: <Widget>[
@@ -126,7 +126,7 @@ class MeanDrawer extends StatelessWidget {
           ListTile(
             leading: Icon(Icons.nature_outlined),
             title: Text(
-              'Yeild Notifier',
+              'Yield Notifier',
               style: TextStyle(
                 fontSize: 18,
               ),
@@ -135,7 +135,7 @@ class MeanDrawer extends StatelessWidget {
                Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => yeild(appBar: AppBar(title: Text("time To Get yeild"),)),
+                      builder: (context) => yeild(appBar: AppBar(title: Text(""),)),
                     ));
             
                   

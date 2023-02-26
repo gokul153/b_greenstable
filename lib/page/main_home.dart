@@ -78,6 +78,9 @@ class _FPageState extends State<FPage> {
       appBar: AppBar(
         title: Text("B_green"),
         backgroundColor: (Colors.green),
+        actions: <Widget>[
+          
+        ],
       ),
       drawer: MeanDrawer(),
       body: Center(
@@ -157,8 +160,8 @@ class _FPageState extends State<FPage> {
                 ]);
               },
             ),
-
-            Expanded(
+          Text("Moisture is${wet}"),
+       /*     Expanded(
               child: FirebaseAnimatedList(
                   query: ref,
                   itemBuilder: (context, snapshot, animation, index) {
@@ -170,7 +173,7 @@ class _FPageState extends State<FPage> {
                       ),
                     );
                   }),
-            ),
+            ),*/
             /*  Center(
               child: Container(
                 height: 100,
@@ -215,7 +218,7 @@ class _FPageState extends State<FPage> {
                   print("button is $position");
                   if (position == true) {
                     ref
-                        // .child('1')
+                      // .child('1')
                         .set({'status': 1})
                         .then((value) {})
                         .onError((error, stackTrace) {

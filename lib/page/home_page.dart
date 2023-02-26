@@ -42,7 +42,8 @@ class _HomePageState extends State<HomePage> {
   void showTopSnackBar(BuildContext context) => Flushbar(
         icon: Icon(Icons.notifications_active),
         title: "Agriculture Department",
-        message: "സബ്സിഡിയോടെ കാർഷിക യന്ത്രങ്ങൾ സ്വന്തമാക്കുന്നതിന് ജൂലൈ 1 മുതൽ അപേക്ഷിക്കാം  പ്രകൃതി ക്ഷോഭ ദുരിതാശ്വാസത്തിന് നഷ്ടം സംഭവിച്ച് 10 ദിവസത്തിനുള്ളിലും വിള ഇന്‍ഷുറന്‍സ് നഷ്ടപരിഹാരത്തിന് നഷ്ടം സംഭവിച്ച് 15 ദിവസത്തിനുള്ളിലും അപേക്ഷ സമര്‍പ്പിക്കേണ്ടതാണ്.",
+        message:
+            "സബ്സിഡിയോടെ കാർഷിക യന്ത്രങ്ങൾ സ്വന്തമാക്കുന്നതിന് ജൂലൈ 1 മുതൽ അപേക്ഷിക്കാം  പ്രകൃതി ക്ഷോഭ ദുരിതാശ്വാസത്തിന് നഷ്ടം സംഭവിച്ച് 10 ദിവസത്തിനുള്ളിലും വിള ഇന്‍ഷുറന്‍സ് നഷ്ടപരിഹാരത്തിന് നഷ്ടം സംഭവിച്ച് 15 ദിവസത്തിനുള്ളിലും അപേക്ഷ സമര്‍പ്പിക്കേണ്ടതാണ്.",
         duration: Duration(seconds: 3),
         flushbarPosition: FlushbarPosition.TOP,
       )..show(context);
@@ -54,6 +55,18 @@ class _HomePageState extends State<HomePage> {
         appBar: AppBar(
           elevation: 0,
           backgroundColor: Colors.green,
+          actions: <Widget>[
+            IconButton(
+              onPressed: () {
+                //  showFlushbar(context: context, flushbar: flushbar),
+                showTopSnackBar(context);
+              },
+              icon: Icon(
+                Icons.notification_add_outlined,
+                color: Colors.red,
+              ),
+            ),
+          ],
           /* automaticallyImplyLeading: false,
           leadingWidth: 40,
           leading: TextButton(
@@ -97,69 +110,42 @@ class _HomePageState extends State<HomePage> {
                     padding: const EdgeInsets.symmetric(
                         horizontal: 15.0, vertical: 20.0),
                     child: Row(children: [
-                      Container(
-                        height: 45.0,
-                        width: 300.0,
-                        padding: const EdgeInsets.symmetric(horizontal: 5.0),
-                        decoration: BoxDecoration(
-                          color: white,
-                          border: Border.all(color: green),
-                          boxShadow: [
-                            BoxShadow(
-                              color: green.withOpacity(0.15),
-                              blurRadius: 10,
-                              offset: const Offset(0, 0),
+                      Row(
+                        children: [
+                          /*    TextField(
+                            decoration: InputDecoration(
+                              border: InputBorder.none,
+                              hintText: 'Search',
                             ),
-                          ],
-                          borderRadius: BorderRadius.circular(10.0),
-                        ),
-                        child: Row(
-                          children: [
-                            const SizedBox(
-                              height: 45,
-                              width: 200,
-                              child: TextField(
-                                decoration: InputDecoration(
-                                  border: InputBorder.none,
-                                  hintText: 'Search',
-                                ),
-                              ),
-                            ),
-                            Image.asset(
-                              'assets/icons/search.png',
-                              height: 25,
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.symmetric(horizontal: 5),
-                              child: IconButton(
-                                onPressed: () {
-                                  //  showFlushbar(context: context, flushbar: flushbar),
-                                  showTopSnackBar(context);
-                                },
-                                icon: Icon(
-                                  Icons.notification_add_outlined,
-                                  color: Colors.red,
-                                ),
-                              ),
-                            )
-                          ],
-                        ),
+                          ),*/
+                          Text(
+                            "Bgreen!! Go Green ",
+                            style: TextStyle(
+                                fontFamily: "Courier", fontSize: 25.0),
+                            textAlign: TextAlign.center,
+                          ),
+                        ],
                       ),
                       //    ElevatedButton.icon(onPressed: () {}, icon: Icon(Icons.details_outlined), label: Text("To veiw status")),
                     ])),
                 Padding(
                   padding: const EdgeInsets.all(4.0),
-                  child: Container(
-                    child: Image.asset('assets/images/IoT_smart-farming.png',
-                        width: MediaQuery.of(context).size.width ,
-                        height: 400),
+                  child: Column(
+                    children: [
+                      Image.asset("assets/images/MyLogoArt20230224083626.png",
+                          width: 200, height: 200),
+                      Container(
+                        child: Image.asset(
+                            'assets/images/IoT_smart-farming.png',
+                            width: MediaQuery.of(context).size.width,
+                            height: 400),
+                      ),
+                    ],
                   ),
                 ),
-              
                 Center(
                   child: Row(
                     children: [
-                      
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Container(
@@ -178,7 +164,8 @@ class _HomePageState extends State<HomePage> {
                                 primary: Colors.green,
                                 padding: EdgeInsets.symmetric(
                                     horizontal: 2,
-                                    vertical: 10), // Set the padding of the button
+                                    vertical:
+                                        10), // Set the padding of the button
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(20)),
                               ),
@@ -186,39 +173,7 @@ class _HomePageState extends State<HomePage> {
                               label: const Text("Live status and Control")),
                         ),
                       ),
-        
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Container(
-                            width: MediaQuery.of(context).size.width * 0.45,
-                            height: MediaQuery.of(context).size.width * 0.25,
-                            child: ElevatedButton.icon(
-                                onPressed: () {
-                                  // statusiot();
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>  CameraGalleryDemo()),
-                                  );
-                                },
-                                style: ElevatedButton.styleFrom(
-                                  primary: Colors.green,
-                                  padding: EdgeInsets.symmetric(
-                                      horizontal: 2,
-                                      vertical: 10), // Set the padding of the button
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(20)),
-                                ),
-                                icon: const Icon(Icons.details_outlined),
-                                label: const Text("Disease Analysics")),
-                          ),
-                        ),
-                    ],
-                  ),
-                ),
-               Row(
-                children: [
-                   Padding(
+                      Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Container(
                           width: MediaQuery.of(context).size.width * 0.45,
@@ -229,50 +184,87 @@ class _HomePageState extends State<HomePage> {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => Predict()),
+                                      builder: (context) =>
+                                          CameraGalleryDemo()),
                                 );
                               },
                               style: ElevatedButton.styleFrom(
                                 primary: Colors.green,
                                 padding: EdgeInsets.symmetric(
                                     horizontal: 2,
-                                    vertical: 10), // Set the padding of the button
+                                    vertical:
+                                        10), // Set the padding of the button
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(20)),
                               ),
                               icon: const Icon(Icons.details_outlined),
-                              label: const Text("Prediction Of Crops")),
+                              label: const Text("Disease Analysics")),
                         ),
                       ),
-        
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Container(
-                            width: MediaQuery.of(context).size.width * 0.45,
-                            height: MediaQuery.of(context).size.width * 0.25,
-                            child: ElevatedButton.icon(
-                                onPressed: () {
-                                  // statusiot();
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => yeild(appBar: AppBar(title: Text(""),))),
-                                  );
-                                },
-                                style: ElevatedButton.styleFrom(
-                                  primary: Colors.green,
-                                  padding: EdgeInsets.symmetric(
-                                      horizontal: 2,
-                                      vertical: 10), // Set the padding of the button
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(20)),
-                                ),
-                                icon: const Icon(Icons.details_outlined),
-                                label: const Text("Yeild Notifier")),
-                          ),
-                        ),
-                ],
-               )
+                    ],
+                  ),
+                ),
+                Row(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Container(
+                        width: MediaQuery.of(context).size.width * 0.45,
+                        height: MediaQuery.of(context).size.width * 0.25,
+                        child: ElevatedButton.icon(
+                            onPressed: () {
+                              // statusiot();
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Predict()),
+                              );
+                            },
+                            style: ElevatedButton.styleFrom(
+                              primary: Colors.green,
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 2,
+                                  vertical:
+                                      10), // Set the padding of the button
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(20)),
+                            ),
+                            icon: const Icon(Icons.details_outlined),
+                            label: const Text("Prediction Of Crops")),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Container(
+                        width: MediaQuery.of(context).size.width * 0.45,
+                        height: MediaQuery.of(context).size.width * 0.25,
+                        child: ElevatedButton.icon(
+                            onPressed: () {
+                              // statusiot();
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => yeild(
+                                            appBar: AppBar(
+                                          title: Text(""),
+                                        ))),
+                              );
+                            },
+                            style: ElevatedButton.styleFrom(
+                              primary: Colors.green,
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 2,
+                                  vertical:
+                                      10), // Set the padding of the button
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(20)),
+                            ),
+                            icon: const Icon(Icons.details_outlined),
+                            label: const Text("Yeild Notifier")),
+                      ),
+                    ),
+                  ],
+                )
                 /*     ElevatedButton.icon(
               icon: const Icon(Icons.camera_alt),
               label: const Text("take photo"),
@@ -438,6 +430,7 @@ String image_url = '';
 
 class _cropwindowState extends State<cropwindow> {
   Future<void> onUploadImage() async {
+    print("process_triggered");
     //File imagefile = _croppedFile; //convert to bytes
     String url =
         "http://ec2-43-205-135-176.ap-south-1.compute.amazonaws.com:8080/disease?f=";
@@ -448,7 +441,11 @@ class _cropwindowState extends State<cropwindow> {
     String parsedData = Uri.encodeComponent(base64string);
     url = url + parsedData;
     // print(url);
-    fecthdata(url);
+    http.Response response = await http.get(Uri.parse(url));
+    String result = response.body;
+    print(result);
+    //print(response.body);
+    /// return response.body;
   }
 
   /* Future<void> upimage() async {
