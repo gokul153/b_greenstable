@@ -110,7 +110,7 @@ class MeanDrawer extends StatelessWidget {
           ListTile(
             leading: Icon(Icons.mail),
             title: Text(
-              'Disease Analysics',
+              'Disease Analysis',
               style: TextStyle(
                 fontSize: 18,
               ),

@@ -132,8 +132,8 @@ class _HomePageState extends State<HomePage> {
                   padding: const EdgeInsets.all(4.0),
                   child: Column(
                     children: [
-                      Image.asset("assets/images/MyLogoArt20230224083626.png",
-                          width: 200, height: 200),
+                /*      Image.asset("assets/images/MyLogoArt20230224083626.png",
+                          width: 200, height: 200),*/
                       Container(
                         child: Image.asset(
                             'assets/images/IoT_smart-farming.png',
@@ -169,7 +169,7 @@ class _HomePageState extends State<HomePage> {
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(20)),
                               ),
-                              icon: const Icon(Icons.details_outlined),
+                              icon: const Icon(Icons.live_tv),
                               label: const Text("Live status and Control")),
                         ),
                       ),
@@ -197,7 +197,7 @@ class _HomePageState extends State<HomePage> {
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(20)),
                               ),
-                              icon: const Icon(Icons.details_outlined),
+                              icon: const Icon(Icons.health_and_safety_outlined),
                               label: const Text("Disease Analysics")),
                         ),
                       ),
@@ -229,7 +229,7 @@ class _HomePageState extends State<HomePage> {
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(20)),
                             ),
-                            icon: const Icon(Icons.details_outlined),
+                            icon: const Icon(Icons.batch_prediction_outlined),
                             label: const Text("Prediction Of Crops")),
                       ),
                     ),
