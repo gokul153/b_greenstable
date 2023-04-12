@@ -34,6 +34,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'B_GREEN',
       theme: ThemeData(
         primaryColor: Colors.green, // Change the primary color

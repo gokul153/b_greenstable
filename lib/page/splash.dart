@@ -1,3 +1,4 @@
+import 'package:b_green/login.dart/signin.dart';
 import 'package:b_green/page/meandrawer.dart';
 import 'package:flutter/material.dart';
 //import 'package:begreen/core/color.dart';
@@ -38,12 +39,12 @@ class SplashPage extends StatelessWidget {
             child: Image.asset('assets/images/Asset1.png'),
           ),
           const SizedBox(height: 25),
-          GestureDetector(
+         GestureDetector(
             onTap: () {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (builder) => const BottomNavBar()));
+                      builder: (builder) => const Signin()));
             },
             child: Container(
               padding: const EdgeInsets.symmetric(
