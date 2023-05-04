@@ -1,5 +1,6 @@
 import 'package:b_green/data/bottom_menu.dart';
 import 'package:b_green/main.dart';
+import 'package:b_green/page/bottompages/homepage_update.dart';
 import 'package:b_green/page/home_page.dart';
 import 'package:b_green/page/main_home.dart';
 import 'package:b_green/page/prediction.dart';
@@ -11,8 +12,10 @@ import 'package:flutter/material.dart';
 
 //import './detail_screen.dart';
 //import './home_screen.dart';
+String memail = "";
+
 class MeanDrawer extends StatelessWidget {
-  const MeanDrawer({super.key});
+  MeanDrawer({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -37,9 +40,10 @@ class MeanDrawer extends StatelessWidget {
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
                       image: DecorationImage(
-                       //   image: NetworkImage('https://i.pravatar.cc/300')
-                          image: AssetImage('assets/images/MyLogoArt20230224083626.png'),
-                          ),
+                        //   image: NetworkImage('https://i.pravatar.cc/300')
+                        image: AssetImage(
+                            'assets/images/MyLogoArt20230224083626.png'),
+                      ),
                     ),
                   ),
                   Text(
@@ -69,11 +73,11 @@ class MeanDrawer extends StatelessWidget {
               ),
             ),
             onTap: () {
-              Navigator.push(
+              /*     Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => BottomNavBar(),
-                  ));
+                    builder: (context) => Home(),
+                  ));*/
             },
           ),
           ListTile(
@@ -115,12 +119,12 @@ class MeanDrawer extends StatelessWidget {
                 fontSize: 18,
               ),
             ),
-            onTap: (){
+            onTap: () {
               Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => CameraGalleryDemo(),
-                    ));
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => CameraGalleryDemo(),
+                  ));
             },
           ),
           ListTile(
@@ -131,14 +135,15 @@ class MeanDrawer extends StatelessWidget {
                 fontSize: 18,
               ),
             ),
-            onTap:(){
-               Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => yeild(appBar: AppBar(title: Text(""),)),
-                    ));
-            
-                  
+            onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => yeild(
+                        appBar: AppBar(
+                      title: Text(""),
+                    )),
+                  ));
             },
           ),
         ],

@@ -1,19 +1,22 @@
+import 'package:b_green/login.dart/Authcontroller.dart';
 import 'package:b_green/page/bottompages/profile.dart';
 import 'package:b_green/page/knowcrop.dart';
 import 'package:b_green/page/main_home.dart';
+import 'package:b_green/page/meandrawer.dart';
 import 'package:b_green/page/statusiot.dart';
 import 'package:flutter/material.dart';
+
 //import 'package:mine/pages/data/cropdata.dart';
 //import 'package:mine/pages/homepage/croppredict.dart';
 //import 'package:mine/pages/homepage/moisturecontrol.dart';
 //import 'package:mine/pages/homepage/weather.dart';
 //import 'package:mine/pages/knowcrop.dart';
 //import 'package:mine/pages/bottompages/profile.dart';
+String name = "";
 
 class Home extends StatefulWidget {
-  const Home({
-    Key? key,
-  }) : super(key: key);
+  String email;
+  Home({Key? key, required this.email}) : super(key: key);
 
   @override
   State<Home> createState() => _HomeState();
@@ -21,9 +24,30 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   double availableScreenWidth = 0;
+
   int selectedIndex = 0;
 
   @override
+  void initState() {
+    // TODO: implement initState
+    name = "";
+    super.initState();
+    String checkname = widget.email;
+    print(checkname);
+    int len = checkname.length;
+    for (int i = 0; i < len - 1; i++) {
+      if (checkname[i] != "@") {
+        name = name + checkname[i];
+      } else {
+        break;
+      }
+    }
+    print("user is$name");
+    setState(() {
+      name = name;
+    });
+  }
+
   Widget build(BuildContext context) {
     availableScreenWidth = MediaQuery.of(context).size.width - 50;
     // var size = MediaQuery.of(context).size;
@@ -40,97 +64,76 @@ class _HomeState extends State<Home> {
           ),
         ),*/
         elevation: 0,
-        //top right corner small icon
-        actions: <Widget>[
-          Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: InkWell(
-              onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const Profile()));
-              },
-              child: Container(
-                width: 36,
-                height: 30,
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(20)),
-              ),
-            ),
-          )
-        ],
-        //the icon ends here
       ),
-      drawer: Drawer(
-        width: 220,
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: [
-            DrawerHeader(
-              decoration:
-                  const BoxDecoration(color: Color.fromARGB(255, 84, 147, 56)),
-              child: Stack(
-                children: <Widget>[
-                  Align(
-                    alignment: Alignment.topCenter,
-                    child: Stack(
-                      children: <Widget>[
-                        ClipOval(
-                          child: Image.asset(
-                            'assets/images/one.jpg',
-                            width: 80,
-                            height: 80,
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 50.0,
-                  ),
-                  const Align(
-                    alignment: Alignment.bottomCenter,
-                    child: Text(
-                      'Ardra S M',
-                      style: TextStyle(color: Colors.white, fontSize: 18),
-                      textAlign: TextAlign.end,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            ListTile(
-              leading: const Icon(Icons.menu),
-              title: const Text('Hello'),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              leading: const Icon(Icons.newspaper),
-              title: const Text('News'),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              leading: const Icon(Icons.settings),
-              title: const Text('Settings'),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              leading: const Icon(Icons.exit_to_app),
-              title: const Text('Exit'),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-          ],
-        ),
-      ),
+      drawer: MeanDrawer(),
+      //  Get.offAll(() => Home(email:user.email!));
+      /*  drawer: ListView(
+       padding: EdgeInsets.zero,
+       children: [
+         DrawerHeader(
+           decoration:
+               const BoxDecoration(color: Color.fromARGB(255, 84, 147, 56)),
+           child: Stack(
+             children: <Widget>[
+               Align(
+                 alignment: Alignment.topCenter,
+                 child: Stack(
+                   children: <Widget>[
+                     ClipOval(
+                       child: Image.asset(
+                         'assets/images/one.jpg',
+                         width: 80,
+                         height: 80,
+                         fit: BoxFit.cover,
+                       ),
+                     ),
+                   ],
+                 ),
+               ),
+               const SizedBox(
+                 height: 50.0,
+               ),
+               const Align(
+                 alignment: Alignment.bottomCenter,
+                 child: Text(
+                   'Ardra S M',
+                   style: TextStyle(color: Colors.white, fontSize: 18),
+                   textAlign: TextAlign.end,
+                 ),
+               ),
+             ],
+           ),
+         ),
+         ListTile(
+           leading: const Icon(Icons.menu),
+           title: const Text('Hello'),
+           onTap: () {
+             Navigator.pop(context);
+           },
+         ),
+         ListTile(
+           leading: const Icon(Icons.newspaper),
+           title: const Text('News'),
+           onTap: () {
+             Navigator.pop(context);
+           },
+         ),
+         ListTile(
+           leading: const Icon(Icons.settings),
+           title: const Text('Settings'),
+           onTap: () {
+             Navigator.pop(context);
+           },
+         ),
+         ListTile(
+           leading: const Icon(Icons.exit_to_app),
+           title: const Text('Exit'),
+           onTap: () {
+             Navigator.pop(context);
+           },
+         ),
+       ],
+     ),*/
       body: Column(children: [
         // Header Section
         Container(
@@ -149,9 +152,11 @@ class _HomeState extends State<Home> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: const [
                   Text(
-                    "Welcome to",
+                    "Welcome ",
                     style: TextStyle(fontSize: 22, color: Colors.white),
                   ),
+
+                  //  Text(name),
                   Text(
                     "Be Green",
                     style: TextStyle(
@@ -339,13 +344,16 @@ class _HomeState extends State<Home> {
               // Folder List
               GestureDetector(
                   onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const FPage()));
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => const FPage()));
                   },
                   child: longBox("Moisture Contoller")),
               longBox("TimeNote"),
+              ElevatedButton(
+                  onPressed: () {
+                    AuthController.instance.logout();
+                  },
+                  child: Text("Sign out!"))
             ],
           ),
         )

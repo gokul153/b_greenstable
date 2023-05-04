@@ -1,10 +1,13 @@
 import 'package:b_green/doubl_page_copy/bottomnav_added.dart';
+import 'package:b_green/login.dart/Authcontroller.dart';
+import 'package:b_green/login.dart/signup.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 //import 'package:mine/login/signup.dart';
 //import 'package:mine/login/front.dart';
 //import 'package:flutter_progress_hud/flutter_progress_hud.dart';
 //import 'package:mine/bottomnav.dart';
+import 'package:get/get.dart';
 
 var user = "";
 
@@ -66,7 +69,7 @@ class _SigninState extends State<Signin> {
                             width: 40.0,
                             child: IconButton(
                                 onPressed: () {
-                                /*  Navigator.push(
+                                  /*  Navigator.push(
                                       context,
                                       MaterialPageRoute(
                                           builder: (builder) =>
@@ -152,6 +155,10 @@ class _SigninState extends State<Signin> {
                                   child: TextFormField(
                                     controller: _emailController,
                                     decoration: const InputDecoration(
+                                        prefixIcon: Icon(
+                                          Icons.email,
+                                          color: Colors.red,
+                                        ),
                                         labelText: "Email",
                                         labelStyle: TextStyle(
                                             color: Colors.black,
@@ -165,6 +172,7 @@ class _SigninState extends State<Signin> {
                                         ),
                                     style: const TextStyle(color: Colors.black),
                                     validator: (email) {
+                                      print("enter valid email");
                                       return null;
                                     },
                                   ),
@@ -188,9 +196,11 @@ class _SigninState extends State<Signin> {
                                     borderRadius: BorderRadius.circular(20.0),
                                   ),
                                   child: TextFormField(
+                                      
                                       scrollPadding: const EdgeInsets.all(10.0),
                                       controller: _passwordController,
                                       decoration: const InputDecoration(
+                                        prefixIcon: Icon(Icons.password_outlined),
                                           labelText: "Password",
                                           labelStyle: TextStyle(
                                               color: Colors.black,
@@ -211,13 +221,16 @@ class _SigninState extends State<Signin> {
                                 ),
                                 GestureDetector(
                                   onTap: () {
-                                   Navigator.push(
+                                    AuthController.instance.login(
+                                        _emailController.text.trim(),
+                                        _passwordController.text);
+                                    /*   Navigator.push(
                                         context,
                                         MaterialPageRoute(
                                             builder: (builder) =>
                                                 const BottomPage(
                                                     //  remail: '',
-                                                    )));
+                                                    )));*/
                                   },
                                   child: Container(
                                     alignment: Alignment.center,
@@ -262,14 +275,15 @@ class _SigninState extends State<Signin> {
                                               fontWeight: FontWeight.bold,
                                             ),
                                             recognizer: TapGestureRecognizer()
-                                              ..onTap = () => {
-                                                   /* Navigator.push(
+                                              ..onTap = () =>
+                                                  Get.to(() => Createacc())
+                                            /* Navigator.push(
                                                       context,
                                                       MaterialPageRoute(
                                                           builder: (context) =>
                                                               const Createacc()),
                                                     )*/
-                                                  }),
+                                            ),
                                       ]),
                                 ),
                               ],

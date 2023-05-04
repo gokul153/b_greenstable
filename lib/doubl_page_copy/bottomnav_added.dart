@@ -19,7 +19,7 @@ class BottomPage extends StatefulWidget {
 class _BottomPageState extends State<BottomPage> {
   int _selectedIndex = 0;
   final List<Widget> _children = [
-    const Home(),
+    // Home(),
     const Scan(),
     const FavoritePage(
       favoritedPlants: [],

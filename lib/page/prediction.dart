@@ -198,7 +198,7 @@ class _PredictState extends State<Predict> {
                 }
                 if (error == 0) {
                   url =
-                      'http://ec2-65-2-146-120.ap-south-1.compute.amazonaws.com:8080/crop?n=$n&p=$p&k=$k&ph=$ph&r=$rain';
+                      'http://ec2-54-214-135-137.us-west-2.compute.amazonaws.com:8080/crop?n=$n&p=$p&k=$k&ph=$ph&r=$rain';
                   print("fetching");
                  print(url);
                   http.Response response = await http.get(Uri.parse(url));

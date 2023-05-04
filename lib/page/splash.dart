@@ -1,4 +1,5 @@
 import 'package:b_green/login.dart/signin.dart';
+import 'package:b_green/login.dart/signup.dart';
 import 'package:b_green/page/meandrawer.dart';
 import 'package:flutter/material.dart';
 //import 'package:begreen/core/color.dart';
@@ -66,7 +67,12 @@ class SplashPage extends StatelessWidget {
             ),
           ),
           TextButton(
-            onPressed: () {},
+            onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (builder) => const Createacc()));
+            },
             child: Text(
               'Create an account',
               style: TextStyle(
@@ -78,7 +84,9 @@ class SplashPage extends StatelessWidget {
             ),
           ),
           TextButton(
-            onPressed: () {},
+            onPressed: () {
+             
+            },
             child: Text(
               'Forgot Password?',
               style: TextStyle(

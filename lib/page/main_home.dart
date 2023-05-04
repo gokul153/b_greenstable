@@ -225,6 +225,15 @@ class _FPageState extends State<FPage> {
                           print("error Occured \n");
                         });
                   }
+                   if (position == false) {
+                    ref
+                      // .child('1')
+                        .set({'status': 0})
+                        .then((value) {})
+                        .onError((error, stackTrace) {
+                          print("error Occured \n");
+                        });
+                  }
                   value1 = false;
                 },
                 onDoubleTap: () {},
