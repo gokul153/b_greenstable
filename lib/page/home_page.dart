@@ -433,14 +433,14 @@ class _cropwindowState extends State<cropwindow> {
     print("process_triggered");
     //File imagefile = _croppedFile; //convert to bytes
     String url =
-        "http://ec2-43-205-135-176.ap-south-1.compute.amazonaws.com:8080/disease?f=";
+        "http://ec2-13-233-200-28.ap-south-1.compute.amazonaws.com:8080/disease?f=";
     Uint8List imagebytes = await _croppedFile!.readAsBytes();
     String base64string =
         base64.encode(imagebytes); //convert bytes to base64 string
 
     String parsedData = Uri.encodeComponent(base64string);
     url = url + parsedData;
-    // print(url);
+    print(url);
     http.Response response = await http.get(Uri.parse(url));
     String result = response.body;
     print(result);
