@@ -3,6 +3,7 @@ import 'package:b_green/page/bottompages/profile.dart';
 import 'package:b_green/page/knowcrop.dart';
 import 'package:b_green/page/main_home.dart';
 import 'package:b_green/page/meandrawer.dart';
+import 'package:b_green/page/prediction.dart';
 import 'package:b_green/page/statusiot.dart';
 import 'package:flutter/material.dart';
 
@@ -281,10 +282,10 @@ class _HomeState extends State<Home> {
                   Expanded(
                     child: GestureDetector(
                         onTap: () {
-                          /*  Navigator.push(
+                            Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const Npk()));*/
+                                  builder: (context) =>  Predict()));
                         },
                         child: buildFileColumn('crop3', 'Crop Prediction')),
                   ),
