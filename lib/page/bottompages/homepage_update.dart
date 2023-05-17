@@ -1,8 +1,11 @@
 import 'package:b_green/login.dart/Authcontroller.dart';
 import 'package:b_green/page/bottompages/profile.dart';
+import 'package:b_green/page/bottompages/weather.dart';
 import 'package:b_green/page/knowcrop.dart';
 import 'package:b_green/page/main_home.dart';
 import 'package:b_green/page/meandrawer.dart';
+import 'package:b_green/page/news.dart';
+//import 'package:b_green/page/news.dart';
 import 'package:b_green/page/prediction.dart';
 import 'package:b_green/page/statusiot.dart';
 import 'package:flutter/material.dart';
@@ -282,10 +285,10 @@ class _HomeState extends State<Home> {
                   Expanded(
                     child: GestureDetector(
                         onTap: () {
-                            Navigator.push(
+                          Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) =>  Predict()));
+                                  builder: (context) => Predict()));
                         },
                         child: buildFileColumn('crop3', 'Crop Prediction')),
                   ),
@@ -295,10 +298,10 @@ class _HomeState extends State<Home> {
                   Expanded(
                     child: GestureDetector(
                         onTap: () {
-                          /*   Navigator.push(
+                          Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const Weather()));*/
+                                  builder: (context) => weather()));
                         },
                         child: buildFileColumn('cloud', 'Weather')),
                   ),
@@ -349,7 +352,10 @@ class _HomeState extends State<Home> {
                         MaterialPageRoute(builder: (context) => const FPage()));
                   },
                   child: longBox("Moisture Contoller")),
-              longBox("TimeNote"),
+              GestureDetector( onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => const News()));
+                  },child: longBox("NEWS")),
               ElevatedButton(
                   onPressed: () {
                     AuthController.instance.logout();

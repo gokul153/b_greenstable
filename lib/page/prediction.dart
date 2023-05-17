@@ -107,109 +107,110 @@ class _PredictState extends State<Predict> {
       ),*/
       body: Padding(
         padding: const EdgeInsets.all(20),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            TextFormField(
-              controller: _ntextController,
-              decoration: const InputDecoration(
-                hintText: 'Nitrogen Level',
-                border: OutlineInputBorder(),
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              TextFormField(
+                controller: _ntextController,
+                decoration: const InputDecoration(
+                  hintText: 'Nitrogen Level',
+                  border: OutlineInputBorder(),
+                ),
               ),
-            ),
-            TextFormField(
-              controller: _ptextController,
-              decoration: const InputDecoration(
-                hintText: 'Phosphorous Level',
-                border: OutlineInputBorder(),
+              TextFormField(
+                controller: _ptextController,
+                decoration: const InputDecoration(
+                  hintText: 'Phosphorous Level',
+                  border: OutlineInputBorder(),
+                ),
               ),
-            ),
-            TextFormField(
-              controller: _ktextController,
-              decoration: const InputDecoration(
-                hintText: 'Potassium Level',
-                border: OutlineInputBorder(),
+              TextFormField(
+                controller: _ktextController,
+                decoration: const InputDecoration(
+                  hintText: 'Potassium Level',
+                  border: OutlineInputBorder(),
+                ),
               ),
-            ),
-            TextFormField(
-              controller: _phtextController,
-              decoration: const InputDecoration(
-                hintText: 'pH Value',
-                border: OutlineInputBorder(),
+              TextFormField(
+                controller: _phtextController,
+                decoration: const InputDecoration(
+                  hintText: 'pH Value',
+                  border: OutlineInputBorder(),
+                ),
               ),
-            ),
-            TextFormField(
-              controller: _rtextController,
-              decoration: const InputDecoration(
-                hintText: 'Rainfall in mm',
-                border: OutlineInputBorder(),
+              TextFormField(
+                controller: _rtextController,
+                decoration: const InputDecoration(
+                  hintText: 'Rainfall in mm',
+                  border: OutlineInputBorder(),
+                ),
               ),
-            ),
-            MaterialButton(
-              onPressed: () async {
-                print("butoon presed");
-                error = 0;
-                n = double.parse(_ntextController.text);
-                p = double.parse(_ptextController.text);
-                k = double.parse(_ktextController.text);
-                ph = double.parse(_phtextController.text);
-                rain = double.parse(_rtextController.text);
+              MaterialButton(
+                onPressed: () async {
+                  print("butoon presed");
+                  error = 0;
+                  n = double.parse(_ntextController.text);
+                  p = double.parse(_ptextController.text);
+                  k = double.parse(_ktextController.text);
+                  ph = double.parse(_phtextController.text);
+                  rain = double.parse(_rtextController.text);
 
-                if (n > 100 || n <= 0) {
-                  const snackbar = SnackBar(
-                      content: Text(
-                          "Invalid value for nitrogen,phosphorous or pottasium"));
-                  ScaffoldMessenger.of(context).showSnackBar(snackbar);
-                  error = 1;
-                } else {
-                  error = 0;
-                }
-                if (p <= 0) {
-                  const snackbar =
-                      SnackBar(content: Text("Invalid value for phosphorous"));
-                  ScaffoldMessenger.of(context).showSnackBar(snackbar);
-                  error = 1;
-                } else {
-                  error = 0;
-                }
-                if (k <= 0) {
-                  const snackbar =
-                      SnackBar(content: Text("Invalid value for pottasium"));
-                  ScaffoldMessenger.of(context).showSnackBar(snackbar);
-                  error = 1;
-                } else {
-                  error = 0;
-                }
-                if (rain <= 0) {
-                  const snackbar =
-                      SnackBar(content: Text("Invalid value for rain"));
-                  ScaffoldMessenger.of(context).showSnackBar(snackbar);
-                  error = 1;
-                } else {
-                  error = 0;
-                }
-                if (ph > 14 || ph <= 0) {
-                  const snackbar =
-                      SnackBar(content: Text("Invalid value for pH"));
-                  ScaffoldMessenger.of(context).showSnackBar(snackbar);
-                  error = 1;
-                } else {
-                  error = 0;
-                }
-                if (error == 0) {
-                  url =
-                      'http://ec2-54-214-135-137.us-west-2.compute.amazonaws.com:8080/crop?n=$n&p=$p&k=$k&ph=$ph&r=$rain';
-                  print("fetching");
-                 print(url);
-                  http.Response response = await http.get(Uri.parse(url));
-                  print(response.body);
-                  cropr = response.body;
-                  print("from maain$cropr");
-                  setState(() {
-                    // cropr = "intial";
+                  if (n > 100 || n <= 0) {
+                    const snackbar = SnackBar(
+                        content: Text(
+                            "Invalid value for nitrogen,phosphorous or pottasium"));
+                    ScaffoldMessenger.of(context).showSnackBar(snackbar);
+                    error = 1;
+                  } else {
+                    error = 0;
+                  }
+                  if (p <= 0) {
+                    const snackbar = SnackBar(
+                        content: Text("Invalid value for phosphorous"));
+                    ScaffoldMessenger.of(context).showSnackBar(snackbar);
+                    error = 1;
+                  } else {
+                    error = 0;
+                  }
+                  if (k <= 0) {
+                    const snackbar =
+                        SnackBar(content: Text("Invalid value for pottasium"));
+                    ScaffoldMessenger.of(context).showSnackBar(snackbar);
+                    error = 1;
+                  } else {
+                    error = 0;
+                  }
+                  if (rain <= 0) {
+                    const snackbar =
+                        SnackBar(content: Text("Invalid value for rain"));
+                    ScaffoldMessenger.of(context).showSnackBar(snackbar);
+                    error = 1;
+                  } else {
+                    error = 0;
+                  }
+                  if (ph > 14 || ph <= 0) {
+                    const snackbar =
+                        SnackBar(content: Text("Invalid value for pH"));
+                    ScaffoldMessenger.of(context).showSnackBar(snackbar);
+                    error = 1;
+                  } else {
+                    error = 0;
+                  }
+                  if (error == 0) {
+                    url =
+                        'http://ec2-52-25-38-39.us-west-2.compute.amazonaws.com:8080/crop?n=$n&p=$p&k=$k&ph=$ph&r=$rain';
+                    print("fetching");
+                    print(url);
+                    http.Response response = await http.get(Uri.parse(url));
+                    print(response.body);
+                    cropr = response.body;
+                    print("from maain$cropr");
+                    setState(() {
+                      // cropr = "intial";
 
-                    this.cropr = cropr.toString();
-                       });
+                      this.cropr = cropr.toString();
+                    });
                     //  cropr = "Orange";
                     if (cropr.contains("Orange")) {
                       Navigator.push(
@@ -219,7 +220,7 @@ class _PredictState extends State<Predict> {
                           ));
                       //   Navigator.of(context).pushReplacementNamed('/Orange');
                     }
-                     if (cropr.contains("Pigeon")) {
+                    if (cropr.contains("Pigeon")) {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
@@ -268,18 +269,20 @@ class _PredictState extends State<Predict> {
                       //   Navigator.of(context).pushReplacementNamed('/Orange');
                     }
                     if (cropr.contains("Mung")) {
+                      // ignore: use_build_context_synchronously
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => Mung(),
+                            builder: (context) => const Mung(),
                           ));
                       //   Navigator.of(context).pushReplacementNamed('/Orange');
                     }
                     if (cropr.contains("Blackgram")) {
+                      // ignore: use_build_context_synchronously
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => Blackgrams(),
+                            builder: (context) => const Blackgrams(),
                           ));
                       //   Navigator.of(context).pushReplacementNamed('/Orange');
                     }
@@ -388,30 +391,32 @@ class _PredictState extends State<Predict> {
                       //   Navigator.of(context).pushReplacementNamed('/Orange');
                     }
 
-                 /*   Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => result(),
-                        ));*/
+                    /*   Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => result(),
+                          ));*/
 
                     //    if(cropr)
-               
-                  // const snackbar = SnackBar(content: Text('crop is$cropr'));
-                  //ScaffoldMessenger.of(context).showSnackBar(snackbar);
-                  ;
-                } else {
-                  const snackbar = SnackBar(content: Text("Invalid "));
-                  ScaffoldMessenger.of(context).showSnackBar(snackbar);
-                }
-              },
-              color: Colors.green,
-              child:
-                  const Text('SUBMIT', style: TextStyle(color: Colors.white)),
-            ),
-            Text("Crop Recommeded According to the condition is as follows \n"),
-            Text('$cropr'),
-            Text(cropr),
-          ],
+
+                    // const snackbar = SnackBar(content: Text('crop is$cropr'));
+                    //ScaffoldMessenger.of(context).showSnackBar(snackbar);
+                    ;
+                  } else {
+                    const snackbar = SnackBar(content: Text("Invalid "));
+                    ScaffoldMessenger.of(context).showSnackBar(snackbar);
+                  }
+                },
+                color: Colors.green,
+                child:
+                    const Text('SUBMIT', style: TextStyle(color: Colors.white)),
+              ),
+              Text(
+                  "Crop Recommeded According to the condition is as follows \n"),
+              Text('$cropr'),
+              Text(cropr),
+            ],
+          ),
         ),
       ),
     );
