@@ -3,6 +3,7 @@ import 'dart:convert' as convert;
 import 'package:b_green/login.dart/Authcontroller.dart';
 import 'package:b_green/page/meandrawer.dart';
 import 'package:b_green/page/splash.dart';
+import 'package:b_green/proposal_page.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 //import 'package:firebase_database/ui/firebase_animated_list.dart';
@@ -45,7 +46,7 @@ class MyApp extends StatelessWidget {
         fontFamily: 'Roboto',
       ),
       // home: HomePage(),
-      home: FirstScreen(),
+      home: ProposalPage(),
     );
   }
 }
